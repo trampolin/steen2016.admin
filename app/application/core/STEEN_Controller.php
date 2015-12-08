@@ -29,7 +29,9 @@ class STEEN_Controller extends CI_Controller {
         $this->load->view($sView,$aData);
 
         if ($bRenderFull) {
-            $this->load->view('partials/main/footer');
+            $this->load->view('partials/main/footer', [
+                'sJsInclude' => $sView
+            ]);
         }
     }
 }
