@@ -15,4 +15,21 @@ class STEEN_Controller extends CI_Controller {
         // store if it's ajax request
         $this->bIsAjaxRequest = $this->input->is_ajax_request();
     }
+
+    /**
+     * @param string $sView
+     * @param array $aData
+     * @param bool $bRenderFull
+     */
+    protected function response($sView,$aData = [],$bRenderFull = true) {
+        if ($bRenderFull) {
+            $this->load->view('partials/main/header');
+        }
+
+        $this->load->view($sView,$aData);
+
+        if ($bRenderFull) {
+            $this->load->view('partials/main/footer');
+        }
+    }
 }
