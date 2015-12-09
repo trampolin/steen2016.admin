@@ -41,4 +41,15 @@ class Gig_model extends STEEN_Model {
             ->get()
             ->result();
     }
+
+    /**
+     * @return array
+     */
+    public function getGigStatusArray() {
+        return [
+            'inactive' => 'Inaktiv',
+            'active' => 'Aktiv',
+            'abandoned' => 'Abgesagt'
+        ];
+    }
 }

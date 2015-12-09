@@ -8,6 +8,8 @@
 
 ?>
 
+
+
 <!-- widget grid -->
 <section id="widget-grid" class="">
 
@@ -18,7 +20,7 @@
         <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
             <!-- Widget ID (each widget will need unique ID)-->
-            <div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-editbutton="false">
+            <div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-editbutton="false" data-widget-deletebutton="false">
                 <!-- widget options:
 								usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
 				
@@ -55,6 +57,9 @@
                             <thead>
                             <tr>
                                 <th>Ort</th>
+                                <th>Titel</th>
+                                <th>Datum</th>
+                                <th>Status</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -62,6 +67,9 @@
                             <?php foreach($aGigs as $oGig) : ?>
                             <tr>
                                 <td><?= $oGig->name ?></td>
+                                <td><?= $oGig->title ?></td>
+                                <td><?= $oGig->date ?></td>
+                                <td><?= form_dropdown('',$aGigStatus,$oGig->status,'class="form-control input-xs"') ?></td>
                             </tr>
                             <?php endforeach ?>
 

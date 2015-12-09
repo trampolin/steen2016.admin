@@ -16,7 +16,8 @@ class Gig extends STEEN_Controller {
         $aGigs = $this->gig_model->get();
 
         $this->response('gig/index', [
-            'aGigs' => $aGigs
+            'aGigs' => $aGigs,
+            'aGigStatus' => $this->gig_model->getGigStatusArray()
         ]);
     }
 }
