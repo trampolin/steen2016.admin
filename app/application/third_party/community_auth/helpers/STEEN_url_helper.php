@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * Community Auth - MY_url_helper
+ * Community Auth - STEEN_url_helper
  *
  * Community Auth is an open source authentication application for CodeIgniter 3
  *
@@ -164,5 +164,5 @@ if( ! function_exists('secure_anchor') )
 
 // --------------------------------------------------------------
 
-/* End of file MY_url_helper.php */
-/* Location: /application/helpers/MY_url_helper.php */
+/* End of file STEEN_url_helper.php */
+/* Location: /application/helpers/STEEN_url_helper.php */

@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * Community Auth - MY_Form_validation
+ * Community Auth - STEEN_Form_validation
  *
  * Community Auth is an open source authentication application for CodeIgniter 3
  *
@@ -13,7 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @link        http://community-auth.com
  */
 
-class MY_Form_validation extends CI_Form_validation {
+class STEEN_Form_validation extends CI_Form_validation {
 
 	/**
 	 * Access to protected $_error_array
@@ -127,5 +127,5 @@ class MY_Form_validation extends CI_Form_validation {
 
 }
 
-/* End of file MY_Form_validation.php */
-/* Location: /application/libraries/MY_Form_validation.php */ 
+/* End of file STEEN_Form_validation.php */
+/* Location: /application/libraries/STEEN_Form_validation.php */

@@ -13,7 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @link        http://community-auth.com
  */
 
-class MY_Model extends CI_Model {
+class STEEN_Model extends CI_Model {
 
 	/**
 	 * An array specifying the form validation error delimeters.
@@ -161,5 +161,5 @@ class MY_Model extends CI_Model {
 	// --------------------------------------------------------------
 }
 
-/* End of file MY_Model.php */
-/* Location: /application/libraries/MY_Model.php */
+/* End of file STEEN_Model.php */
+/* Location: /application/libraries/STEEN_Model.php */

@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class MY_Session extends CI_Session {
+class STEEN_Session extends CI_Session {
 
 	public $pre_regenerated_session_id = NULL;
 	public $regenerated_session_id     = NULL;

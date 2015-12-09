@@ -1,15 +1,15 @@
 #!/bin/bash
 # core
-if [ ! -f ./core/MY_Controller.php ]; then
-	cp ./third_party/community_auth/core/MY_Controller.php ./core/MY_Controller.php 
+if [ ! -f ./core/STEEN_Controller.php ]; then
+	cp ./third_party/community_auth/core/STEEN_Controller.php ./core/STEEN_Controller.php
 fi
 
-if [ ! -f ./core/MY_Input.php ]; then
-	cp ./third_party/community_auth/core/MY_Input.php ./core/MY_Input.php 
+if [ ! -f ./core/STEEN_Input.php ]; then
+	cp ./third_party/community_auth/core/STEEN_Input.php ./core/STEEN_Input.php
 fi
 
-if [ ! -f ./core/MY_Model.php ]; then
-	cp ./third_party/community_auth/core/MY_Model.php ./core/MY_Model.php
+if [ ! -f ./core/STEEN_Model.php ]; then
+	cp ./third_party/community_auth/core/STEEN_Model.php ./core/STEEN_Model.php
 fi
 
 # hooks

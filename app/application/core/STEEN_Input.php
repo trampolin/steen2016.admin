@@ -149,5 +149,5 @@ class STEEN_Input extends CI_Input {
 
 }
 
-/* End of file STEEN_Input.php */
-/* Location: /application/core/STEEN_Input.php */
+/* End of file MY_Input.php */
+/* Location: /application/core/MY_Input.php */ 

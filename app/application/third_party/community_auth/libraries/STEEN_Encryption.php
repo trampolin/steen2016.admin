@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * Community Auth - MY_Encryption Library
+ * Community Auth - STEEN_Encryption Library
  *
  * Community Auth is an open source authentication application for CodeIgniter 3
  *
@@ -13,7 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @link        http://community-auth.com
  */
 
-class MY_Encryption extends CI_Encryption {
+class STEEN_Encryption extends CI_Encryption {
 
 	public $saved_settings = array();
 
@@ -74,7 +74,7 @@ class MY_Encryption extends CI_Encryption {
 
 }
 
-// END MY_Encryption class
+// END STEEN_Encryption class
 
-/* End of file MY_Encryption.php */
-/* Location: ./application/libraries/MY_Encryption.php */
+/* End of file STEEN_Encryption.php */
+/* Location: ./application/libraries/STEEN_Encryption.php */

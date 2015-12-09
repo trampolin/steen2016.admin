@@ -13,7 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @link        http://community-auth.com
  */
 
-class Examples_model extends MY_Model {
+class Examples_model extends STEEN_Model {
 
 	/**
 	 * Class Constructor

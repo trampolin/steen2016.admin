@@ -5,7 +5,10 @@
  * Date: 13.10.15
  * Time: 21:10
  */
-class STEEN_Controller extends CI_Controller {
+
+require_once APPPATH . 'third_party/community_auth/core/Auth_Controller.php';
+
+class STEEN_Controller extends Auth_Controller {
 
     public $bIsAjaxRequest;
 

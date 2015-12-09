@@ -141,10 +141,10 @@ class Examples extends STEEN_Controller
     {
         // Customize this array for your user
         $user_data = array(
-            'user_name'     => 'skunkbot',
-            'user_pass'     => 'PepeLePew7',
-            'user_email'    => 'skunkbot@example.com',
-            'user_level'    => '1', // 9 if you want to login @ examples/index.
+            'user_name'     => 'ritsch',
+            'user_pass'     => 'Ritsch0815',
+            'user_email'    => 'ritschie@rodson.de',
+            'user_level'    => '9', // 9 if you want to login @ examples/index.
         );
 
         $this->load->library('form_validation');
