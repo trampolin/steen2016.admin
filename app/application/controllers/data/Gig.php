@@ -6,7 +6,7 @@
  * Time: 21:11
  */
 
-class Gig extends STEEN_Controller {
+class Gig extends Admin_Controller {
 
     public function __construct() {
         parent::__construct();

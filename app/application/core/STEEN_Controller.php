@@ -11,7 +11,9 @@ require_once APPPATH . 'third_party/community_auth/core/Auth_Controller.php';
 abstract class STEEN_Controller extends Auth_Controller
 {
 
-    public $bIsAjaxRequest;
+    protected $bIsAjaxRequest;
+
+    protected $minAuthLevel;
 
     public function __construct()
     {
@@ -20,7 +22,6 @@ abstract class STEEN_Controller extends Auth_Controller
         // store if it's ajax request
         $this->bIsAjaxRequest = $this->input->is_ajax_request();
     }
-
 
     /**
      * @param $sView

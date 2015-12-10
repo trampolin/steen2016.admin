@@ -18,6 +18,8 @@ if( ! isset( $optional_login ) )
 	echo '<h1>Login</h1>';
 }
 
+echo $login_url;
+
 if( ! isset( $on_hold_message ) )
 {
 	if( isset( $login_error_mesg ) )
@@ -47,6 +49,7 @@ if( ! isset( $on_hold_message ) )
 
 	echo form_open( $login_url, array( 'class' => 'std-form' ) ); 
 ?>
+
 
 	<div>
 

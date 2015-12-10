@@ -11,7 +11,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4">
         <div class="well no-padding">
-            <form action="" id="login-form" class="smart-form client-form" novalidate="novalidate">
+
+            <?= form_open( base_url().'login', array( 'class' => 'smart-form client-form', 'novalidate' => 'novalidate') ); ?>
+
+            <!--form action="<?= base_url() ?>index.php/login?redirect=<?= base_url() ?>" method="post" id="login-form" class="smart-form client-form" novalidate="novalidate" accept-charset="utf-8"-->
                 <header>
                     Sign In
                 </header>
@@ -21,14 +24,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <section>
                         <label class="label">E-mail</label>
                         <label class="input"> <i class="icon-append fa fa-user"></i>
-                            <input type="email" name="email">
+                            <input type="text" name="login_string">
                             <b class="tooltip tooltip-top-right"><i class="fa fa-user txt-color-teal"></i> Please enter email address/username</b></label>
                     </section>
 
                     <section>
                         <label class="label">Password</label>
                         <label class="input"> <i class="icon-append fa fa-lock"></i>
-                            <input type="password" name="password">
+                            <input type="password" name="login_pass">
                             <b class="tooltip tooltip-top-right"><i class="fa fa-lock txt-color-teal"></i> Enter your password</b> </label>
                         <div class="note">
                             <a href="forgotpassword.html">Forgot password?</a>
@@ -37,12 +40,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                     <section>
                         <label class="checkbox">
-                            <input type="checkbox" name="remember" checked="">
+                            <input type="checkbox" name="remember_me" checked="">
                             <i></i>Stay signed in</label>
                     </section>
                 </fieldset>
                 <footer>
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" class="btn btn-primary" value="Login">
                         Sign in
                     </button>
                 </footer>

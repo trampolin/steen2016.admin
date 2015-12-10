@@ -19,6 +19,8 @@ abstract class Admin_Controller extends STEEN_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+
+		$this->minAuthLevel = 1;
 	}
 
 	// ------------------------------------------------------------------------
