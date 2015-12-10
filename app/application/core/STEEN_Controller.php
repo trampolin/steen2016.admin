@@ -8,7 +8,7 @@
 
 require_once APPPATH . 'third_party/community_auth/core/Auth_Controller.php';
 
-class STEEN_Controller extends Auth_Controller
+abstract class STEEN_Controller extends Auth_Controller
 {
 
     public $bIsAjaxRequest;

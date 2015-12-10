@@ -5,7 +5,7 @@
  * Date: 13.10.15
  * Time: 21:14
  */
-class Home extends STEEN_Controller {
+class Home extends Admin_Controller {
 
     public function __construct() {
         parent::__construct();
