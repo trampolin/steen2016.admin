@@ -40,7 +40,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $autoload['packages'] = array(
-    APPPATH . 'third_party/community_auth/'
 );
 
 /*
@@ -63,8 +62,6 @@ $autoload['packages'] = array(
 $autoload['libraries'] = [
     'database',
     'session',
-    'tokens',
-    'Authentication'
 ];
 
 /*
@@ -91,7 +88,6 @@ $autoload['drivers'] = array();
 |	$autoload['helper'] = array('url', 'file');
 */
 $autoload['helper'] = array(
-    'serialization',
     'url',
     'form',
     'cookie'
@@ -110,8 +106,6 @@ $autoload['helper'] = array(
 |
 */
 $autoload['config'] = array(
-    'db_tables',
-    'authentication'
 );
 
 /*
@@ -143,5 +137,5 @@ $autoload['language'] = array();
 */
 $autoload['model'] = [
     'Gig_model' => 'gig_model',
-    'auth_model'
+    'user_model' => 'user_model'
 ];

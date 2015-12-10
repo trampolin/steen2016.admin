@@ -13,6 +13,8 @@
  */
 abstract class Admin_Controller extends STEEN_Controller {
 
+    public $_sUserName;
+
 	/**
 	 * Admin controller constructor.
 	 */
@@ -21,6 +23,12 @@ abstract class Admin_Controller extends STEEN_Controller {
 		parent::__construct();
 
 		$this->minAuthLevel = 1;
+
+        if (!$this->isLoggedIn()) {
+            $this->redirectLogin();
+        } else {
+            $this->_sUserName = $this->session->username;
+        }
 	}
 
 	// ------------------------------------------------------------------------

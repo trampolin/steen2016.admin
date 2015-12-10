@@ -6,9 +6,8 @@
  * Time: 21:10
  */
 
-require_once APPPATH . 'third_party/community_auth/core/Auth_Controller.php';
 
-abstract class STEEN_Controller extends Auth_Controller
+abstract class STEEN_Controller extends CI_Controller
 {
 
     protected $bIsAjaxRequest;
@@ -21,6 +20,29 @@ abstract class STEEN_Controller extends Auth_Controller
 
         // store if it's ajax request
         $this->bIsAjaxRequest = $this->input->is_ajax_request();
+    }
+
+    /**
+     * @return bool
+     */
+    protected function isLoggedIn() {
+        return $this->user_model->isLoggedIn();
+    }
+
+    protected function redirectLogin() {
+        redirect(base_url().'user/login');
+    }
+
+    protected function renderLoginPage($error = '') {
+        $this->renderPage('user/login',[
+            'error' => $error
+        ],false,false,false);
+    }
+
+    protected function renderRegisterPage($error = '') {
+        $this->renderPage('user/register',[
+            'error' => $error
+        ],false,false,false);
     }
 
     /**

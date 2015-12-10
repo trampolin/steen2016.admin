@@ -13,11 +13,13 @@ class Gig extends Admin_Controller {
     }
 
     public function index() {
+
         $aGigs = $this->gig_model->get();
 
         $this->renderPage('gig/index', [
             'aGigs' => $aGigs,
             'aGigStatus' => $this->gig_model->getGigStatusArray()
         ]);
+
     }
 }

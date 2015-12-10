@@ -12,11 +12,6 @@ class Home extends Admin_Controller {
     }
 
     public function index() {
-        if( $this->verify_min_level(1) )
-        {
-            $this->renderPage('home/index');
-        } else {
-            $this->renderPage('auth/login',[],false,false,false);
-        }
+        $this->renderPage('home/index');
     }
 }
