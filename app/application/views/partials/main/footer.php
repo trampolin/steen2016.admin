@@ -14,6 +14,9 @@
 <!-- END MAIN PANEL -->
 
 <!-- PAGE FOOTER -->
+
+<?php if (!isset($bRenderFooter) || $bRenderFooter === true) { ?>
+
 <div class="page-footer">
     <div class="row">
         <div class="col-xs-12 col-sm-6">
@@ -21,6 +24,8 @@
         </div>
     </div>
 </div>
+
+<?php } ?>
 <!-- END PAGE FOOTER -->
 
 <!-- SHORTCUT AREA : With large tiles (activated via clicking user name tag)

@@ -8,33 +8,39 @@
 
 require_once APPPATH . 'third_party/community_auth/core/Auth_Controller.php';
 
-class STEEN_Controller extends Auth_Controller {
+class STEEN_Controller extends Auth_Controller
+{
 
     public $bIsAjaxRequest;
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
 
         // store if it's ajax request
         $this->bIsAjaxRequest = $this->input->is_ajax_request();
     }
 
+
     /**
-     * @param string $sView
+     * @param $sView
      * @param array $aData
-     * @param bool $bRenderFull
+     * @param bool|true $bRenderMenu
+     * @param bool|true $bRenderTopRow
+     * @param bool|true $bRenderFooter
      */
-    protected function response($sView,$aData = [],$bRenderFull = true) {
-        if ($bRenderFull) {
-            $this->load->view('partials/main/header');
-        }
+    protected function renderPage($sView, $aData = [], $bRenderMenu = true, $bRenderTopRow = true, $bRenderFooter = true)
+    {
+        $this->load->view('partials/main/header', [
+            'bRenderMenu' => $bRenderMenu,
+            'bRenderTopRow' => $bRenderTopRow
+        ]);
 
-        $this->load->view($sView,$aData);
+        $this->load->view($sView, $aData);
 
-        if ($bRenderFull) {
-            $this->load->view('partials/main/footer', [
-                'sJsInclude' => $sView
-            ]);
-        }
+        $this->load->view('partials/main/footer', [
+            'sJsInclude' => $sView,
+            'bRenderFooter' => $bRenderFooter
+        ]);
     }
 }

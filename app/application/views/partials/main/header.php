@@ -75,14 +75,16 @@
     * 'fixed-page-footer' - Fixes footer
     * 'container'         - boxed layout mode (non-responsive: will not work with fixed-navigation & fixed-ribbon)
 -->
-<body class="">
+<body class="<?= isset($bRenderMenu) && !$bRenderMenu ? 'no-menu' : '' ?>">
 
 
-<?php $this->load->view('partials/main/toprow'); ?>
-<?php $this->load->view('partials/main/menu'); ?>
+<?php if (!isset($bRenderTopRow) || $bRenderTopRow === true) { $this->load->view('partials/main/bricks/toprow'); } ?>
+<?php if (!isset($bRenderMenu) || $bRenderMenu === true) { $this->load->view('partials/main/bricks/menu'); } ?>
 
 <!-- MAIN PANEL -->
 <div id="main" role="main">
+
+    <?php if (!isset($bRenderTopRow) || $bRenderTopRow === true) { ?>
 
     <!-- RIBBON -->
     <div id="ribbon">
@@ -113,5 +115,7 @@
     </div>
     <!-- END RIBBON -->
 
+    <?php } ?>
+
     <!-- MAIN CONTENT -->
-    <div id="content">
+    <div id="content" class="">

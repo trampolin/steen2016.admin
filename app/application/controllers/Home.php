@@ -12,6 +12,11 @@ class Home extends STEEN_Controller {
     }
 
     public function index() {
-        $this->response('home/index');
+        if( $this->verify_min_level(1) )
+        {
+            $this->renderPage('home/index');
+        } else {
+            $this->renderPage('auth/login',[],false,false,false);
+        }
     }
 }

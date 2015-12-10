@@ -1,4 +1,5 @@
 <?php
+defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * Created by PhpStorm.
  * User: rmahr1
@@ -29,11 +30,19 @@
     <!-- NAVIGATION : This navigation is also responsive-->
     <nav>
         <ul>
-            <li class="active">
+            <li class="">
                 <a href="<?= base_url() ?>" title="Home"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Home</span></a>
             </li>
             <li>
                 <a href="#"><i class="fa fa-lg fa-fw fa-bullhorn"></i> <span class="menu-item-parent">Gigs</span></a>
+                <ul>
+                    <li>
+                        <a href="<?= base_url() ?>gig"><i class="fa fa-lg fa-fw fa-info"></i> Übersicht</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-lg fa-fw fa-globe"></i> <span class="menu-item-parent">Venues</span></a>
                 <ul>
                     <li>
                         <a href="<?= base_url() ?>gig"><i class="fa fa-lg fa-fw fa-info"></i> Übersicht</a>
