@@ -52,4 +52,17 @@ class Gig_model extends STEEN_Model {
             'abandoned' => 'Abgesagt'
         ];
     }
+
+    /**
+     * render the gigModal into a view
+     */
+    public function gigModal() {
+        $mh = new ModalWindow('gigModal');
+        $mh->dataAttribute = 'data-gig-id';
+        $mh->loadFunctionName = 'loadGig';
+        $mh->ajaxRoute = base_url().'modal/gig/show/';
+        $mh->title = 'Gig';
+        $mh->icon = 'fa-bullhorn';
+        $this->load->view('partials/modal/wrapper', $mh->getData());
+    }
 }

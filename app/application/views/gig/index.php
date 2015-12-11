@@ -8,7 +8,13 @@
 
 ?>
 
-
+<section id="page-toprow">
+    <div class="row">
+        <div class="col-xs-12">
+            <button class="btn btn-primary" data-toggle="modal" data-target="#gigModal">Gig anlegen</button>
+        </div>
+    </div>
+</section>
 
 <!-- widget grid -->
 <section id="widget-grid" class="">
@@ -96,5 +102,7 @@
 
 </section>
 <!-- end widget grid -->
+
+<?php $this->gig_model->gigModal() ?>
 
 

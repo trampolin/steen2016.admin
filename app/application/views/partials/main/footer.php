@@ -58,24 +58,6 @@ you can add as many as you like
 
 <!--================================================== -->
 
-<!-- PACE LOADER - turn this on if you want ajax loading to show (caution: uses lots of memory on iDevices)-->
-<script data-pace-options='{ "restartOnRequestAfter": true }' src="<?= base_url() ?>assets/js/plugin/pace/pace.min.js"></script>
-
-<!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script>
-    if (!window.jQuery) {
-        document.write('<script src="<?= base_url() ?>assets/js/libs/jquery-2.1.1.min.js"><\/script>');
-    }
-</script>
-
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-<script>
-    if (!window.jQuery.ui) {
-        document.write('<script src="<?= base_url() ?>assets/js/libs/jquery-ui-1.10.3.min.js"><\/script>');
-    }
-</script>
-
 <!-- IMPORTANT: APP CONFIG -->
 <script src="<?= base_url() ?>assets/js/app.config.js"></script>
 

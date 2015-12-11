@@ -6,18 +6,15 @@
  * Time: 21:11
  */
 
-class Gig extends Admin_Controller {
+class User extends Public_Controller {
 
     public function __construct() {
         parent::__construct();
     }
 
     public function index() {
-
-        $this->renderPage('gig/index', [
-            'aGigs' => $this->gig_model->get(),
-            'aGigStatus' => $this->gig_model->getGigStatusArray()
+        $this->load->view('user/login', [
+            'error' => 'Not logged in'
         ]);
-
     }
 }

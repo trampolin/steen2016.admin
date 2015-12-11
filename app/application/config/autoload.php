@@ -90,7 +90,8 @@ $autoload['drivers'] = array();
 $autoload['helper'] = array(
     'url',
     'form',
-    'cookie'
+    'cookie',
+    'modal'
 );
 
 /*
