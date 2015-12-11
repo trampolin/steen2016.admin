@@ -122,7 +122,7 @@ you can add as many as you like
 <![endif]-->
 
 <!-- Demo purpose only -->
-<script src="<?= base_url() ?>assets/js/demo.min.js"></script>
+<!--script src="<?= base_url() ?>assets/js/demo.min.js"></script-->
 
 <!-- MAIN APP JS FILE -->
 <script src="<?= base_url() ?>assets/js/app.min.js"></script>
