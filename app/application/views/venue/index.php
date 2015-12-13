@@ -11,7 +11,7 @@
 <section id="page-toprow">
     <div class="row">
         <div class="col-xs-12">
-            <button class="btn btn-primary" data-toggle="modal" data-target="#gigModal">Gig anlegen</button>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#venueModal">Venue anlegen</button>
         </div>
     </div>
 </section>
@@ -26,7 +26,7 @@
         <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
             <!-- Widget ID (each widget will need unique ID)-->
-            <div class="jarviswidget jarviswidget-color-darken" id="gig-list"
+            <div class="jarviswidget jarviswidget-color-darken" id="venue-list"
                  data-widget-editbutton="false"
                  data-widget-colorbutton="false"
                  data-widget-fullscreenbutton="false"
@@ -46,7 +46,7 @@
 								-->
                 <header>
                     <span class="widget-icon"> <i class="fa fa-table"></i> </span>
-                    <h2>Alle Gigs</h2>
+                    <h2>Alle Venues</h2>
 
                 </header>
 
@@ -66,20 +66,25 @@
                         <table id="dt_basic" class="table table-striped table-bordered table-hover" width="100%">
                             <thead>
                             <tr>
+                                <th>Name</th>
+                                <th>Strasse</th>
+                                <th>Plz</th>
                                 <th>Ort</th>
-                                <th>Titel</th>
-                                <th>Datum</th>
-                                <th>Status</th>
+                                <th>Aktion</th>
                             </tr>
                             </thead>
                             <tbody>
 
-                            <?php foreach($aGigs as $oGig) : ?>
-                            <tr>
-                                <td><?= $oGig->name ?></td>
-                                <td><?= $oGig->title ?></td>
-                                <td><?= $oGig->date ?></td>
-                                <td><?= form_dropdown('',$aGigStatus,$oGig->status,'class="form-control input-xs"') ?></td>
+                            <?php foreach($aVenues as $oVenue) : ?>
+                            <tr data-id="<?= $oVenue->id ?>">
+                                <td><?= $oVenue->name ?></td>
+                                <td><?= $oVenue->street ?> <?= $oVenue->number ?></td>
+                                <td><?= $oVenue->zip ?></td>
+                                <td><?= $oVenue->city ?></td>
+                                <td>
+                                    <button data-id="<?= $oVenue->id ?>" class="btn btn-xs btn-danger venue-delete">Löschen</button>
+                                    <a href="<?= base_url() ?>venue/details/<?= $oVenue->id ?>" data-id="<?= $oVenue->id ?>" class="btn btn-xs btn-primary venue-details">Details</a>
+                                </td>
                             </tr>
                             <?php endforeach ?>
 
@@ -107,6 +112,6 @@
 </section>
 <!-- end widget grid -->
 
-<?php $this->gig_model->gigModal() ?>
+<?php $this->venue_model->venueModal() ?>
 
 

@@ -45,6 +45,17 @@ abstract class STEEN_Controller extends CI_Controller
         ],false,false,false);
     }
 
+    protected function jsonOutput($data,$bSuccess = true) {
+        $aResponse = [
+            'data' => $data,
+            'success' => $bSuccess
+        ];
+
+        $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($aResponse));
+    }
+
     /**
      * @param $sView
      * @param array $aData

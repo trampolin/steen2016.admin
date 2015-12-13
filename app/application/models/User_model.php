@@ -92,7 +92,15 @@ class User_model extends CI_Model {
 	public function isLoggedIn() {
 		return isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true;
 	}
-	
+
+    public function getUserId() {
+        if ($this->isLoggedIn()) {
+            return $_SESSION['user_id'];
+        } else {
+            return false;
+        }
+    }
+
 	/**
 	 * hash_password function.
 	 * 

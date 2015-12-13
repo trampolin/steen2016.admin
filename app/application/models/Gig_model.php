@@ -35,8 +35,30 @@ class Gig_model extends STEEN_Model {
             ->where('g.deleted',0);
     }
 
+    /**
+     * @return mixed
+     */
     public function get() {
         return $this->_prepareStatement()
+            ->order_by('g.date DESC')
+            ->get()
+            ->result();
+    }
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function byId($id) {
+        return $this->_prepareStatement()
+            ->where('id', $id)
+            ->get()
+            ->row();
+    }
+
+    public function byVenueId($iVenueId) {
+        return $this->_prepareStatement()
+            ->where('venue_id',$iVenueId)
             ->order_by('g.date DESC')
             ->get()
             ->result();

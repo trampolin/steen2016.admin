@@ -140,6 +140,9 @@ you can add as many as you like
 <script src="<?= base_url() ?>assets/js/plugin/moment/moment.min.js"></script>
 <script src="<?= base_url() ?>assets/js/plugin/fullcalendar/jquery.fullcalendar.min.js"></script>
 
+
+<script src="<?= base_url() ?>assets/js/plugin/jquery-form/jquery-form.min.js"></script>
+
 <script>
     $(document).ready(function() {
 

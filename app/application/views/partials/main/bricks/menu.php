@@ -45,7 +45,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <a href="#"><i class="fa fa-lg fa-fw fa-globe"></i> <span class="menu-item-parent">Venues</span></a>
                 <ul>
                     <li>
-                        <a href="<?= base_url() ?>gig"><i class="fa fa-lg fa-fw fa-info"></i> Übersicht</a>
+                        <a href="<?= base_url() ?>venue"><i class="fa fa-lg fa-fw fa-info"></i> Übersicht</a>
                     </li>
                 </ul>
             </li>

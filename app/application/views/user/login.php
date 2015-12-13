@@ -9,8 +9,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
 <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4">
-        <div class="well no-padding">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+        <div class="error-box no-padding">
 
             <?= form_open( base_url().'user/login', array( 'class' => 'smart-form client-form', 'novalidate' => 'novalidate') ); ?>
 

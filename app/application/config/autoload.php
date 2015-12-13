@@ -61,6 +61,7 @@ $autoload['packages'] = array(
 */
 $autoload['libraries'] = [
     'database',
+    'form_validation',
     'session',
 ];
 
@@ -138,5 +139,7 @@ $autoload['language'] = array();
 */
 $autoload['model'] = [
     'Gig_model' => 'gig_model',
+    'Venue_model' => 'venue_model',
+    'Person_model' => 'person_model',
     'user_model' => 'user_model'
 ];
