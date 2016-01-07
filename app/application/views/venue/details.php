@@ -96,7 +96,7 @@
                                     <fieldset>
                                         <section>
                                             <label class="textarea">
-                                                <textarea rows="3" name="memo" placeholder="Kommentar"><?= $oVenue->memo ?></textarea>
+                                                <textarea rows="5" name="memo" placeholder="Kommentar"><?= $oVenue->memo ?></textarea>
                                             </label>
                                         </section>
                                     </fieldset>

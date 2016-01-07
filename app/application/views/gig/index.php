@@ -76,7 +76,7 @@
 
                             <?php foreach($aGigs as $oGig) : ?>
                             <tr>
-                                <td><?= $oGig->name ?></td>
+                                <td><a href="<?= base_url() ?>venue/details/<?= $oGig->venue_id ?>"><?= $oGig->name ?></a></td>
                                 <td><?= $oGig->title ?></td>
                                 <td><?= $oGig->date ?></td>
                                 <td><?= form_dropdown('',$aGigStatus,$oGig->status,'class="form-control input-xs"') ?></td>

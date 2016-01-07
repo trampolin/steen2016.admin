@@ -51,7 +51,7 @@ class Gig_model extends STEEN_Model {
      */
     public function byId($id) {
         return $this->_prepareStatement()
-            ->where('id', $id)
+            ->where('g.id', $id)
             ->get()
             ->row();
     }
