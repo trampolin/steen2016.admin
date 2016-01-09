@@ -97,8 +97,12 @@
                     },
                     method: 'POST'
                 }).success(function(response) {
-                    Steen.messages.success('Kommentar geschrieben');
-                    window.location.reload();
+                    if (Steen.request.isOk(response)) {
+                        Steen.messages.success('Kommentar geschrieben');
+                        window.location.reload();
+                    } else {
+                        Steen.messages.error(response.data);
+                    }
                 }).error(function(jqXhr) {
                     Steen.messages.error(jqXhr.responseText);
                 });
@@ -119,8 +123,12 @@
                     },
                     method: 'POST'
                 }).success(function(response) {
-                    Steen.messages.success('Kommentar geschrieben');
-                    window.location.reload();
+                    if (Steen.request.isOk(response)) {
+                        Steen.messages.success('Kommentar geschrieben');
+                        window.location.reload();
+                    } else {
+                        Steen.messages.error(response.data);
+                    }
                 }).error(function(jqXhr) {
                     Steen.messages.error(jqXhr.responseText);
                 });

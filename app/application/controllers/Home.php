@@ -12,6 +12,15 @@ class Home extends Admin_Controller {
     }
 
     public function index() {
-        $this->renderPage('home/index');
+        $aGigs = $this->gig_model->get();
+        $aPersons = $this->person_model->get();
+
+        $gigWidget = new GigListWidget('venue-details-gigs-widget', $aGigs);
+        $personWidget = new PersonListWidget('venue-details-person-widget',$aPersons);
+
+        $this->renderPage('home/index', [
+            'personWidget' => $personWidget,
+            'gigWidget' => $gigWidget,
+        ]);
     }
 }

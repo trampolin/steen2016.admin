@@ -6,18 +6,30 @@
  * Time: 00:18
  */
 
-class Widget {
+class SteenWidget {
 
     public $id;
     public $title;
     public $viewPath;
     public $viewData;
 
+    public $template;
+
+    public $icon;
+
+    protected $_ci;
+
     function __construct($id, $title, $viewPath, $viewData = []) {
         $this->id = $id;
         $this->title = $title;
         $this->viewPath = $viewPath;
         $this->viewData = $viewData;
+
+        $this->icon = 'fa-table';
+
+        $this->wrapper = 'partials/modules/widget_wrapper';
+
+        $this->_ci =& get_instance();
     }
 
     public function getData() {
@@ -25,14 +37,19 @@ class Widget {
             'widgetId' => $this->id,
             'widgetTitle' => $this->title,
             'widgetViewPath' => $this->viewPath,
-            'widgetViewData' => $this->viewData
+            'widgetViewData' => $this->viewData,
+            'widgetIcon' => $this->icon
         ];
+    }
+
+    public function render($output = false) {
+        return $this->_ci->load->view($this->wrapper,$this->getData(),$output);
     }
 }
 
 class WidgetColumn {
     /**
-     * @var Widget[] $aWidgets
+     * @var SteenWidget[] $aWidgets
      */
     public $aWidgets;
 
@@ -41,7 +58,7 @@ class WidgetColumn {
     }
 
     /**
-     * @param Widget $oWidget
+     * @param SteenWidget $oWidget
      */
     public function addWidget($oWidget) {
         $this->aWidgets[] = $oWidget;

@@ -6,9 +6,12 @@
  * Time: 09:38
  */
 
-
 if (!isset($oVenue->writable)) {
     $oVenue->writable = true;
+}
+
+if (!isset($oVenue->showDetailsButton)) {
+    $oVenue->showDetailsButton = true;
 }
 ?>
 
@@ -47,27 +50,35 @@ if (!isset($oVenue->writable)) {
 
     </fieldset>
 
-    <?php if ($oVenue->writable) { ?>
+
         <footer>
+            <?php if ($oVenue->showDetailsButton) { ?>
+                <a class="btn btn-primary" href="<?= base_url() ?>venue/details/<?= $oVenue->id ?>">Details</a>
+            <?php } ?>
+
+            <?php if ($oVenue->writable) { ?>
+
             <button type="submit" class="btn btn-primary">
                 Speichern
             </button>
+
+                <script type="text/javascript">
+                    $(document).ready(function() {
+                        Steen.forms.createAjaxForm(
+                            '#update-venue-form',
+                            'data/venue/submit/<?= $oVenue->id ?>',
+                            function(response) {
+                                Steen.messages.success('Venue Details gespeichert');
+                            },
+                            function(error) {
+                                Steen.messages.error(error);
+                            }
+                        )
+                    });
+                </script>
+            <?php } ?>
         </footer>
 
-        <script type="text/javascript">
-            $(document).ready(function() {
-                Steen.forms.createAjaxForm(
-                    '#update-venue-form',
-                    'data/venue/submit/<?= $oVenue->id ?>',
-                    function(response) {
-                        Steen.messages.success('Venue Details gespeichert');
-                    },
-                    function(error) {
-                        Steen.messages.error(error);
-                    }
-                )
-            });
-        </script>
-    <?php } ?>
+
 
 </form>

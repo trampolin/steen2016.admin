@@ -18,7 +18,7 @@
          data-widget-deletebutton="false">
 
         <header>
-            <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+            <span class="widget-icon"> <i class="fa <?= $widgetIcon ?>"></i> </span>
             <h2><?= $widgetTitle ?></h2>
 
         </header>

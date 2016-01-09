@@ -19,9 +19,20 @@ class TableHelper
     // don't show specified fields
     private $_ignoreFields = array();
     // show debug info
+
+    private $_aCustomFieldList = [];
+
     public $tableId;
 
     public $debug = false;
+
+    public $template;
+
+    public static $dateFormat = 'd.m.Y';
+
+    function __construct() {
+        $this->template = 'partials/modules/data_table';
+    }
 
     /**
      * Set the data to show
@@ -31,6 +42,13 @@ class TableHelper
     public function setData($data)
     {
         $this->_data = $data;
+    }
+
+    /**
+     * @param string[] $aFieldList
+     */
+    public function setCustomFieldList($aFieldList) {
+        $this->_aCustomFieldList = $aFieldList;
     }
 
     /**
@@ -68,13 +86,17 @@ class TableHelper
      * @param string $prefix
      * @param string $field
      * @param string $suffix
+     * @param string $class
+     * @param string $customTitle
      */
-    public function bindLink($key, $prefix, $field, $suffix = '')
+    public function bindLink($key, $prefix, $field, $suffix = '', $class = '', $customTitle = '')
     {
         $this->_links[$key] = [
             'prefix' => $prefix,
             'field' => $field,
-            'suffix' => $suffix
+            'suffix' => $suffix,
+            'class' => $class,
+            'customTitle' => $customTitle
         ];
     }
 
@@ -172,6 +194,10 @@ class TableHelper
             $result['tableIgnoreFields'] = $this->_ignoreFields;
         }
 
+        if (count($this->_aCustomFieldList) > 0) {
+            $result['tableCustomFieldList'] = $this->_aCustomFieldList;
+        }
+
         return $result;
 
     }
@@ -198,6 +224,9 @@ class TableHelper
                 } else {
                     return json_encode($value);
                 }
+            case 'pretty-date':
+                $dt = new DateTime($value);
+                return $dt->format(TableHelper::$dateFormat);
             default:
                 return $value;
         }

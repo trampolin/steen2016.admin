@@ -24,10 +24,13 @@ class Gig extends Admin_Controller {
     public function details($id) {
 
         $oGig = $this->gig_model->byId($id);
+        $oVenue = $this->venue_model->byId($oGig->venue_id);
+
+        $venueWidget = new VenueDetailsWidget('venue-details-venue-widget',$oVenue,false,true);
 
         $this->renderPage('gig/details', [
             'oGig' => $oGig,
-            'oVenue' => $this->venue_model->byId($oGig->venue_id)
+            'venueWidget' => $venueWidget
         ]);
 
     }

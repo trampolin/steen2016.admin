@@ -94,6 +94,10 @@ $autoload['helper'] = array(
     'cookie',
     'ui/modal',
     'ui/widget',
+    'ui/widgets/table_widget',
+    'ui/widgets/venue_details',
+    'ui/widgets/gig_list',
+    'ui/widgets/person_list',
     'ui/table',
     'utilities/arrays',
     'utilities/objects'
