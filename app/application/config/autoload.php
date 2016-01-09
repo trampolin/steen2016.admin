@@ -92,7 +92,11 @@ $autoload['helper'] = array(
     'url',
     'form',
     'cookie',
-    'modal'
+    'ui/modal',
+    'ui/widget',
+    'ui/table',
+    'utilities/arrays',
+    'utilities/objects'
 );
 
 /*
@@ -141,5 +145,6 @@ $autoload['model'] = [
     'Gig_model' => 'gig_model',
     'Venue_model' => 'venue_model',
     'Person_model' => 'person_model',
-    'user_model' => 'user_model'
+    'user_model' => 'user_model',
+    'ui/Comment_model' => 'comment_model'
 ];

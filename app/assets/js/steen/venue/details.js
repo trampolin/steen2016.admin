@@ -4,12 +4,12 @@
 $(document).ready(function() {
 
 
-    var gigTable =  Steen.tables.create('#venue-gigs');
-    var personTable =  Steen.tables.create('#venue-persons');
+    //var gigTable =  Steen.tables.create('#venue-gigs');
+    //var personTable =  Steen.tables.create('#venue-persons');
 
-    var id = $('#update-venue-form').data('id');
+    //var id = $('#update-venue-form').data('id');
 
-    $('#update-venue-form').ajaxForm({
+    /*$('#update-venue-form').ajaxForm({
         url: '/data/venue/submit/'+id,
         type: 'post',
         success: function(response) {
@@ -19,12 +19,12 @@ $(document).ready(function() {
                 /*if (typeof addVenueTableRow !== 'undefined') {
                     addVenueTableRow(response.data);
                 }*/
-            } else {
+            /*} else {
                 Steen.messages.error(response.data);
             }
 
         }
-    });
+    });*/
 
 
 });

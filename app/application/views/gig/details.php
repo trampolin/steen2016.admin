@@ -68,6 +68,51 @@
                     </div>
                     <!-- end widget -->
                 </article>
+
+            </div>
+            <div class="row">
+
+                <article class="col-xs-12">
+
+                    <!-- Widget ID (each widget will need unique ID)-->
+                    <div class="jarviswidget jarviswidget-color-darken" id="gig-details-comments"
+                         data-widget-editbutton="false"
+                         data-widget-colorbutton="false"
+                         data-widget-fullscreenbutton="false"
+                         data-widget-deletebutton="false">
+
+                        <header>
+                            <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+                            <h2>Kommentare zu: <?= $oGig->title ?></h2>
+
+                        </header>
+
+                        <!-- widget div-->
+                        <div>
+
+                            <!-- widget edit box -->
+                            <div class="jarviswidget-editbox">
+                                <!-- This area used as dropdown edit box -->
+
+                            </div>
+                            <!-- end widget edit box -->
+
+                            <!-- widget content -->
+                            <div class="widget-body no-padding">
+
+                                <?php
+                                    $this->comment_model->renderCommentSection('gig-details-comments-section','gig',$oGig->id);
+                                ?>
+
+                            </div>
+                            <!-- end widget content -->
+
+                        </div>
+                        <!-- end widget div -->
+
+                    </div>
+                    <!-- end widget -->
+                </article>
                 <!-- WIDGET END -->
             </div>
 
@@ -107,16 +152,14 @@
 
                                 <?php var_dump($oVenue) ?>
 
-                                <form id="update-venue-form" class="smart-form" novalidate="novalidate" data-id="<?= $oGig->id ?>">
-
-
+                                <div class="smart-form" novalidate="novalidate" data-id="<?= $oGig->id ?>">
 
                                     <footer>
-                                        <button type="submit" class="btn btn-primary">
-                                            Speichern
-                                        </button>
+                                        <a href="<?= base_url() ?>venue/details/<?= $oVenue->id ?>" class="btn btn-primary">
+                                            Details
+                                        </a>
                                     </footer>
-                                </form>
+                                </div>
 
                             </div>
                             <!-- end widget content -->
@@ -131,12 +174,9 @@
             </div>
         </div>
 
-
-
-
-
-
     </div>
+
+
 
     <!-- end row -->
 

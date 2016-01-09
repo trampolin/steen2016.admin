@@ -29,7 +29,6 @@ class Venue extends Ajax_Controller {
                 'number' => $this->input->post('number'),
                 'city' => $this->input->post('city'),
                 'zip' => $this->input->post('zip'),
-                'memo' => $this->input->post('memo'),
                 'insert_user' => $this->user_model->getUserId()
             ];
 

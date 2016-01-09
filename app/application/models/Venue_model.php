@@ -25,8 +25,7 @@ class Venue_model extends STEEN_Model {
             'v.city',
             'v.zip',
             'v.latitude',
-            'v.longitude',
-            'v.memo'
+            'v.longitude'
         ])
             ->from('venue v')
             ->where('v.deleted',0);

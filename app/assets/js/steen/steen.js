@@ -74,7 +74,35 @@ Steen = {
                     error(jqXHR.responseText);
                 }
             });
+        }
+    },
 
+    forms: {
+        createAjaxForm: function(selector,url,successCallback,errorCallback,clearForm) {
+
+            $(selector).ajaxForm({
+                url: Steen.baseUrl + url,
+                type: 'post',
+                success: function(response) {
+                    if (Steen.request.isOk(response)) {
+                        if (typeof successCallback !== 'undefined') {
+                            successCallback(response.data);
+                            if (clearForm) {
+                                $(selector)[0].reset();
+                            }
+                        }
+                    } else {
+                        if (typeof errorCallback !== 'undefined') {
+                            errorCallback(response.data);
+                        }
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    if (typeof errorCallback !== 'undefined') {
+                        errorCallback(jqXHR.responseText);
+                    }
+                }
+            });
 
         }
     },

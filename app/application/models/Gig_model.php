@@ -25,7 +25,6 @@ class Gig_model extends STEEN_Model {
             'g.getin',
             'g.doors',
             'g.status',
-            'g.memo',
             'g.insert_time',
             'g.insert_user',
             'v.name'
