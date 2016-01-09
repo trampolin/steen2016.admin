@@ -25,6 +25,8 @@ class PersonListWidget extends SteenTableWidget {
         $this->_tableHelper->addKeyMapping('email','E-Mail');
         $this->_tableHelper->addKeyMapping('action','Aktion');
         $this->_tableHelper->bindLink('action',base_url() . 'person/details/','id','','btn btn-primary btn-xs','Details');
+        $this->_tableHelper->bindLink('email', 'mailto:','email');
 
+        $this->icon = 'fa-user';
     }
 }

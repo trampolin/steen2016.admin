@@ -95,9 +95,10 @@ $autoload['helper'] = array(
     'ui/modal',
     'ui/widget',
     'ui/widgets/table_widget',
-    'ui/widgets/venue_details',
-    'ui/widgets/gig_list',
-    'ui/widgets/person_list',
+    'ui/widgets/venue',
+    'ui/widgets/gig',
+    'ui/widgets/person',
+    'ui/widgets/band',
     'ui/table',
     'utilities/arrays',
     'utilities/objects'
@@ -149,6 +150,7 @@ $autoload['model'] = [
     'Gig_model' => 'gig_model',
     'Venue_model' => 'venue_model',
     'Person_model' => 'person_model',
+    'Band_model' => 'band_model',
     'user_model' => 'user_model',
     'ui/Comment_model' => 'comment_model'
 ];

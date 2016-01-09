@@ -27,15 +27,19 @@ class Venue extends Admin_Controller {
         $aPersons = $this->person_model->byVenueId($id);
         $aComments = $this->comment_model->getCommentSectionData('venue-details-comments-section','venue',$id);
 
+        $aBands = $this->band_model->byVenueId($id);
+
         $commentWidget = new SteenWidget('venue-details-comments', 'Kommentare', 'partials/modules/comments', $aComments);
         $gigWidget = new GigListWidget('venue-details-gigs-widget', $aGigs);
         $personWidget = new PersonListWidget('venue-details-person-widget',$aPersons);
+        $bandWidget = new BandListWidget('venue-details-band-widget',$aBands);
         $venueWidget = new VenueDetailsWidget('venue-details-venue-widget',$oVenue);
 
         $this->renderPage('venue/details', [
             'personWidget' => $personWidget,
             'commentWidget' => $commentWidget,
             'gigWidget' => $gigWidget,
+            'bandWidget' => $bandWidget,
             'venueWidget' => $venueWidget
         ]);
 

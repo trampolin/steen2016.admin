@@ -14,25 +14,21 @@
     <div class="row">
 
         <div class="col-xs-12 col-sm-12 col-md-6">
-
             <div class="row">
-
                 <?php $venueWidget->render(); ?>
-
             </div>
-
             <div class="row">
-
                 <?php $commentWidget->render() ?>
-
             </div>
-
-
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-6">
             <div class="row">
                 <?php $gigWidget->render() ?>
+            </div>
+
+            <div class="row">
+                <?php $bandWidget->render() ?>
             </div>
 
             <div class="row">

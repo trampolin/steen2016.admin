@@ -26,5 +26,6 @@ class GigListWidget extends SteenTableWidget {
         $this->_tableHelper->bindConversion('date','pretty-date');
         $this->_tableHelper->bindLink('action',base_url() . 'gig/details/','id','','btn btn-primary btn-xs','Details');
 
+        $this->icon = 'fa-bullhorn';
     }
 }
