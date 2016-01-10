@@ -6,7 +6,7 @@
  * Time: 21:11
  */
 
-class Gig extends Admin_Controller {
+class Gig extends Ajax_Controller {
 
     public function __construct() {
         parent::__construct();
