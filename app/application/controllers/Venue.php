@@ -26,7 +26,6 @@ class Venue extends Admin_Controller {
         $aGigs = $this->gig_model->byVenueId($id);
         $aPersons = $this->person_model->byVenueId($id);
         $aComments = $this->comment_model->getCommentSectionData('venue-details-comments-section','venue',$id);
-
         $aBands = $this->band_model->byVenueId($id);
 
         $commentWidget = new SteenWidget('venue-details-comments', 'Kommentare', 'partials/modules/comments', $aComments);

@@ -6,6 +6,27 @@
  * Time: 13:24
  */
 
+
+class GigDetailsWidget extends SteenWidget {
+    function __construct($id, $oGig, $writable = true, $showDetailsButton = false) {
+
+        $oGig->writable = $writable;
+        $oGig->showDetailsButton = $showDetailsButton;
+
+        parent::__construct(
+            $id,
+            'Gig: ' . $oGig->name,
+            'gig/widgets/gig_details',
+            [
+                'oGig' => $oGig
+            ]
+        );
+
+        $this->icon = 'fa-bullhorn';
+
+    }
+}
+
 class GigListWidget extends SteenTableWidget {
 
     function __construct($id, $aGigs, $title = '') {

@@ -45,12 +45,12 @@
         <div class="chat-body no-padding profile-message">
             <ul>
                 <li class="message">
-                    <img src="<?= base_url() ?>assets/img/avatars/sunny.png" class="online" alt="sunny">
-													<span class="message-text"> <a href="javascript:void(0);" class="username"><?= $aComment->username ?> <small class="text-muted pull-right ultra-light"> 2 Minutes ago </small></a> <?= $aComment->comment ?></span>
+                    <img src="<?= base_url() ?>assets/img/avatars/<?= $aComment->avatar ?>" class="online" alt="sunny">
+                    <span class="message-text"> <a href="javascript:void(0);" class="username"><?= $aComment->username ?> <small class="text-muted pull-right ultra-light"> 2 Minutes ago </small></a> <?= $aComment->comment ?></span>
                 </li>
                 <?php foreach ($aComment->replies as $reply) { ?>
                     <li class="message message-reply">
-                        <img src="<?= base_url() ?>assets/img/avatars/3.png" class="online" alt="user">
+                        <img src="<?= base_url() ?>assets/img/avatars/<?= $reply->avatar ?>" class="online" alt="user">
                         <span class="message-text"> <a href="javascript:void(0);" class="username"><?= $reply->username ?></a> <?= $reply->comment ?> </span>
 
                         <ul class="list-inline font-xs">

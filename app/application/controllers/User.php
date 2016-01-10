@@ -115,7 +115,8 @@ class User extends Public_Controller {
 				$_SESSION['logged_in']    = (bool)true;
 				$_SESSION['is_confirmed'] = (bool)$user->is_confirmed;
 				$_SESSION['is_admin']     = (bool)$user->is_admin;
-				
+				$_SESSION['avatar']       = (string)$user->avatar;
+
 				// user login ok
 
                 redirect(base_url());

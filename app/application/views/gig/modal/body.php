@@ -10,7 +10,6 @@
 <div class="row">
     <div class="col-xs-12">
 
-
         <form id="create-or-update-gig-form" class="smart-form" novalidate="novalidate">
 
             <fieldset>

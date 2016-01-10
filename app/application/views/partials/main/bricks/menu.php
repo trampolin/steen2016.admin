@@ -16,7 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<span> <!-- User image size is adjusted inside CSS, it should stay as it -->
 
 					<a href="javascript:void(0);" id="show-shortcut" data-action="toggleShortcut">
-                        <img src="<?= base_url() ?>assets/img/avatars/sunny.png" alt="me" class="online" />
+                        <img src="<?= base_url() ?>assets/img/avatars/<?= $this->session->avatar ?>" alt="me" class="online" />
 						<span>
 							<?= $this->_sUserName ?>
 						</span>
