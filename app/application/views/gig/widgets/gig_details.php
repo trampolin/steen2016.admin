@@ -21,7 +21,7 @@ if (!isset($oGig->showDetailsButton)) {
 
         <section>
             <label class="input"> <i class="icon-prepend fa fa-info-circle"></i>
-                <input type="text" name="title" placeholder="Gig Titel" value="<?= $oGig->title ?>" <?php if(!$oGig->writable) { echo 'disabled="disabled"'; } ?>>
+                <input type="text" name="title" placeholder="Titel (Bsp: Rocken für den Gutenachtbus)" value="<?= $oGig->title ?>" <?php if(!$oGig->writable) { echo 'disabled="disabled"'; } ?>>
             </label>
         </section>
 
@@ -42,6 +42,14 @@ if (!isset($oGig->showDetailsButton)) {
                 </label>
             </section>
         </div>
+
+        <section>
+            <label class="input"> <i class="icon-prepend fa fa-external-link"></i>
+                <input type="text" name="external_link" placeholder="Externer Link (Webseite der Veranstaltung)" value="<?= $oGig->external_link ?>" <?php if(!$oGig->writable) { echo 'disabled="disabled"'; } ?>>
+            </label>
+        </section>
+
+
 
     </fieldset>
 
@@ -71,7 +79,11 @@ if (!isset($oGig->showDetailsButton)) {
                             function(error) {
                                 Steen.messages.error(error);
                             }
-                        )
+                        );
+
+                        $('#update-gig-form-delete-gig').click(function() {
+                            Steen.messages.error('Noch nicht umgesetzt! ;-)')
+                        });
                     });
                 </script>
             <?php } ?>

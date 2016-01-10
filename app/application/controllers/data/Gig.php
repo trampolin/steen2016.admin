@@ -33,6 +33,7 @@ class Gig extends Ajax_Controller {
                 'date' => $this->input->post('date'),
                 'getin' => $this->input->post('getin'),
                 'doors' => $this->input->post('doors'),
+                'external_link' => $this->input->post('external_link'),
                 'insert_user' => $this->user_model->getUserId()
             ];
 
