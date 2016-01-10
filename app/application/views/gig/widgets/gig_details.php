@@ -21,7 +21,7 @@ if (!isset($oGig->showDetailsButton)) {
 
         <section>
             <label class="input"> <i class="icon-prepend fa fa-info-circle"></i>
-                <input type="text" name="name" placeholder="Gig Titel" value="<?= $oGig->title ?>" <?php if(!$oGig->writable) { echo 'disabled="disabled"'; } ?>>
+                <input type="text" name="title" placeholder="Gig Titel" value="<?= $oGig->title ?>" <?php if(!$oGig->writable) { echo 'disabled="disabled"'; } ?>>
             </label>
         </section>
 
@@ -53,9 +53,12 @@ if (!isset($oGig->showDetailsButton)) {
 
             <?php if ($oGig->writable) { ?>
 
-            <button type="submit" class="btn btn-primary">
-                Speichern
-            </button>
+
+                <button type="submit" class="btn btn-primary">
+                    Speichern
+                </button>
+
+                <span id="update-gig-form-delete-gig" class="btn btn-danger">Löschen</span>
 
                 <script type="text/javascript">
                     $(document).ready(function() {

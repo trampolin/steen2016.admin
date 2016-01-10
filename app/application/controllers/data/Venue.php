@@ -19,7 +19,7 @@ class Venue extends Ajax_Controller {
 
         if ($this->form_validation->run() == FALSE) {
 
-            $this->jsonOutput('Validation failed',false);
+            $this->jsonOutput(validation_errors(),false);
 
         } else {
 

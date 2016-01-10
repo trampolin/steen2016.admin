@@ -74,6 +74,23 @@ class Gig_model extends STEEN_Model {
         ];
     }
 
+    public function create($venueId) {
+        $this->db->insert('gig',
+            [
+                'venue_id' => $venueId,
+                'insert_user' => $this->user_model->getUserId()
+            ]
+        );
+        return $this->db->insert_id();
+    }
+
+    public function update($gigId, $aData) {
+
+        $this->db->where('id', $gigId)
+            ->update('gig', $aData);
+        return $gigId;
+    }
+
     /**
      * render the gigModal into a view
      */

@@ -37,7 +37,7 @@ class VenueListWidget extends SteenTableWidget {
         $this->_tableHelper->setData($aVenues);
 
         $this->_tableHelper->setCustomFieldList([
-            'name','street','number','zip','city','action'
+            'name','street','number','zip','city','action','action2'
         ]);
 
         $this->_tableHelper->addKeyMapping('name','Name');
@@ -46,8 +46,10 @@ class VenueListWidget extends SteenTableWidget {
         $this->_tableHelper->addKeyMapping('zip','PLZ');
         $this->_tableHelper->addKeyMapping('city','Stadt');
         $this->_tableHelper->addKeyMapping('action','Aktion');
+        $this->_tableHelper->addKeyMapping('action2','Aktion');
 
         $this->_tableHelper->bindLink('action',base_url() . 'venue/details/','id','','btn btn-primary btn-xs','Details');
+        $this->_tableHelper->bindLink('action2',base_url() . 'gig/create/','id','','btn btn-success btn-xs','<span class="fa fa-plus"></span> Gig');
 
         $this->icon = 'fa-globe';
     }

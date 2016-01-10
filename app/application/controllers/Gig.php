@@ -13,15 +13,18 @@ class Gig extends Admin_Controller {
     }
 
     public function index() {
-
         $this->renderPage('gig/index', [
             'aGigs' => $this->gig_model->get(),
             'aGigStatus' => $this->gig_model->getGigStatusArray()
         ]);
-
     }
 
-    public function details($id) {
+    public function create($venueId) {
+        $gigId = $this->gig_model->create($venueId);
+        redirect(base_url() . 'gig/details/' . $gigId . '/new');
+    }
+
+    public function details($id,$mode = null) {
 
         $oGig = $this->gig_model->byId($id);
         $oVenue = $this->venue_model->byId($oGig->venue_id);

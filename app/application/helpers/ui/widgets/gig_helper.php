@@ -37,7 +37,7 @@ class GigListWidget extends SteenTableWidget {
         $this->_tableHelper->setData($aGigs);
 
         $this->_tableHelper->setCustomFieldList([
-            'title','date','name','action'
+            'date','name','title','action'
         ]);
 
         $this->_tableHelper->addKeyMapping('title','Name');
