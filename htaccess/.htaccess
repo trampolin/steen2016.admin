@@ -1,0 +1,4 @@
+AddCharset utf-8 .php .css .html .xhtml
+RewriteEngine on
+RewriteCond $1 !^(public|robots\.txt|sitemap\.xml|assets|favicon\.ico|favicon\.png|index\.php|googled1ac6090a1896aac\.html)
+RewriteRule ^(.*)$ /index.php/$1 [L]

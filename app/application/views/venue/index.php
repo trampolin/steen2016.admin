@@ -84,6 +84,7 @@
                                 <td>
                                     <button data-id="<?= $oVenue->id ?>" class="btn btn-xs btn-danger venue-delete">Löschen</button>
                                     <a href="<?= base_url() ?>venue/details/<?= $oVenue->id ?>" data-id="<?= $oVenue->id ?>" class="btn btn-xs btn-primary venue-details">Details</a>
+                                    <a href="<?= base_url() ?>gig/create/<?= $oVenue->id ?>" data-id="<?= $oVenue->id ?>" class="btn btn-xs btn-success venue-details"><span class="fa fa-plus"> Gig</span></a>
                                 </td>
                             </tr>
                             <?php endforeach ?>

@@ -48,7 +48,22 @@ if (!isset($oVenue->showDetailsButton)) {
             </section>
         </div>
 
+        <div class="col-xs-12">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    Karte
+                </div>
+                <div class="panel-footer">
+
+                    <div id="update-venue-form-map-canvas" class="google_maps" data-gmap-lat="23.895883" data-gmap-lng="-80.650635" data-gmap-zoom="5">
+                        &nbsp;
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </fieldset>
+
 
 
         <footer>
@@ -73,12 +88,39 @@ if (!isset($oVenue->showDetailsButton)) {
                             function(error) {
                                 Steen.messages.error(error);
                             }
-                        )
+                        );
+
                     });
                 </script>
             <?php } ?>
         </footer>
 
-
-
 </form>
+<script>
+    $(document).ready(function() {
+
+        // todo irgendwie besser machen ;)
+
+        var initMaps = function() {
+
+            var mapOptions = {
+                center: new google.maps.LatLng('<?= $oVenue->latitude ?>','<?= $oVenue->longitude ?>'),
+                zoom: 10
+            };
+
+            var map = new google.maps.Map(document.getElementById('update-venue-form-map-canvas'), mapOptions);
+
+            var marker = new google.maps.Marker({
+                position: mapOptions.center,
+                map: map,
+                //draggable:true,
+                title: '<?= $oVenue->name ?>'
+            });
+
+        };
+
+        $(window).unbind('gMapsLoaded');
+        $(window).bind('gMapsLoaded', initMaps);
+        loadGoogleMaps();
+    });
+</script>
