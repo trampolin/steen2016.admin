@@ -50,10 +50,23 @@ class Person_model extends STEEN_Model {
             ->row();
     }
 
+    /**
+     * @param $iVenueId
+     * @return mixed
+     */
     public function byVenueId($iVenueId) {
         return $this->_prepareStatement()
             ->join('venue_person vp','p.id = vp.person_id')
             ->where('vp.venue_id',$iVenueId)
+            ->order_by('p.lastname ASC, p.firstname ASC')
+            ->get()
+            ->result();
+    }
+    
+    public function byBandId($iBandId) {
+        return $this->_prepareStatement()
+            ->join('band_person bp','p.id = bp.person_id')
+            ->where('bp.band_id',$iBandId)
             ->order_by('p.lastname ASC, p.firstname ASC')
             ->get()
             ->result();

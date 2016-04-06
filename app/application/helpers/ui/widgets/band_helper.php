@@ -6,6 +6,26 @@
  * Time: 23:22
  */
 
+class BandDetailsWidget extends SteenWidget {
+    function __construct($id, $oBand, $writable = true, $showDetailsButton = false) {
+
+        $oBand->writable = $writable;
+        $oBand->showDetailsButton = $showDetailsButton;
+
+        parent::__construct(
+            $id,
+            'Band: ' . $oBand->name,
+            'band/widgets/band_details',
+            [
+                'oBand' => $oBand
+            ]
+        );
+
+        $this->icon = 'fa-music';
+
+    }
+}
+
 class BandListWidget extends SteenTableWidget {
 
     function __construct($id, $aBands, $title = '') {

@@ -64,6 +64,15 @@ class Gig_model extends STEEN_Model {
             ->result();
     }
 
+    public function byBandId($iBandId) {
+        return $this->_prepareStatement()
+            ->join('gig_band gb', 'gb.gig_id = g.id')
+            ->where('gb.band_id', $iBandId)
+            ->order_by('g.date DESC')
+            ->get()
+            ->result();
+    }
+
     /**
      * @return array
      */
