@@ -49,6 +49,10 @@ class Band_model extends STEEN_Model {
             ->row();
     }
 
+    /**
+     * @param $iVenueId
+     * @return mixed
+     */
     public function byVenueId($iVenueId) {
         return $this->_prepareStatement()
             ->join('gig_band gb','gb.band_id = b.id')
@@ -60,10 +64,27 @@ class Band_model extends STEEN_Model {
             ->result();
     }
 
+    /**
+     * @param $iGigId
+     * @return mixed
+     */
     public function byGigId($iGigId) {
         return $this->_prepareStatement()
             ->join('gig_band gb','gb.band_id = b.id')
             ->where('gb.gig_id',$iGigId)
+            ->order_by('b.name ASC')
+            ->get()
+            ->result();
+    }
+
+    /**
+     * @param $iPersonId
+     * @return mixed
+     */
+    public function byPersonId($iPersonId) {
+        return $this->_prepareStatement()
+            ->join('band_person bp','bp.band_id = b.id')
+            ->where('bp.person_id',$iPersonId)
             ->order_by('b.name ASC')
             ->get()
             ->result();

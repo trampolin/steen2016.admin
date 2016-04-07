@@ -7,6 +7,9 @@
  */
 ?>
 
+<?php var_dump($_SESSION) ?>
+
+
     </div>
     <!-- END MAIN CONTENT -->
 
@@ -172,6 +175,7 @@ you can add as many as you like
 <?php if(isset($sJsInclude)) : ?>
     <script type="text/javascript" src="<?= base_url() ?>assets/js/steen/<?= $sJsInclude ?>.js"></script>
 <?php endif ?>
+
 
 </body>
 

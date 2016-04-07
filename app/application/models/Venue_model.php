@@ -52,6 +52,18 @@ class Venue_model extends STEEN_Model {
             ->row();
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function byPersonId($id) {
+        return $this->_prepareStatement()
+            ->join('venue_person vp', 'vp.venue_id = v.id')
+            ->where('vp.person_id', $id)
+            ->get()
+            ->result();
+    }
+
     public function insert($aData) {
         $this->db->insert('venue', $aData);
         return $this->db->insert_id();

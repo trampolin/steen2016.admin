@@ -6,6 +6,26 @@
  * Time: 13:58
  */
 
+class PersonDetailsWidget extends SteenWidget {
+    function __construct($id, $oPerson, $writable = true, $showDetailsButton = false) {
+
+        $oPerson->writable = $writable;
+        $oPerson->showDetailsButton = $showDetailsButton;
+
+        parent::__construct(
+            $id,
+            'Person: ' . $oPerson->firstname . ' ' . $oPerson->lastname,
+            'person/widgets/person_details',
+            [
+                'oPerson' => $oPerson
+            ]
+        );
+
+        $this->icon = 'fa-user';
+
+    }
+}
+
 class PersonListWidget extends SteenTableWidget {
 
     function __construct($id, $aPersons, $title = '') {
