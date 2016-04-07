@@ -46,12 +46,12 @@
             <ul>
                 <li class="message">
                     <img src="<?= base_url() ?>assets/img/avatars/<?= $aComment->avatar ?>" class="online" alt="sunny">
-                    <span class="message-text"> <a href="javascript:void(0);" class="username"><?= $aComment->username ?> <small class="text-muted pull-right ultra-light"> 2 Minutes ago </small></a> <?= $aComment->comment ?></span>
+                    <span class="message-text"> <a href="<?php if (empty($aComment->person_id)) { ?>javascript:void(0);<?php } else { ?><?= base_url() ?>person/details/<?= $aComment->person_id ?><?php } ?>" class="username"><?= $aComment->username ?> <small class="text-muted pull-right ultra-light"> 2 Minutes ago </small></a> <?= $aComment->comment ?></span>
                 </li>
                 <?php foreach ($aComment->replies as $reply) { ?>
                     <li class="message message-reply">
                         <img src="<?= base_url() ?>assets/img/avatars/<?= $reply->avatar ?>" class="online" alt="user">
-                        <span class="message-text"> <a href="javascript:void(0);" class="username"><?= $reply->username ?></a> <?= $reply->comment ?> </span>
+                        <span class="message-text"> <a href="<?php if (empty($reply->person_id)) { ?>javascript:void(0);<?php } else { ?><?= base_url() ?>person/details/<?= $reply->person_id ?><?php } ?>" class="username"><?= $reply->username ?></a> <?= $reply->comment ?> </span>
 
                         <ul class="list-inline font-xs">
                             <li>

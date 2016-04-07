@@ -124,6 +124,10 @@ class User extends Public_Controller {
                     $_SESSION['is_confirmed'] = (bool)$user->is_confirmed;
                     $_SESSION['is_admin']     = (bool)$user->is_admin;
                     $_SESSION['avatar']       = (string)$user->avatar;
+                    
+                    // set additional data
+                    $oPerson = $this->person_model->byUserId($user->id);
+                    $_SESSION['person']       = $oPerson;
 
                     // user login ok
 

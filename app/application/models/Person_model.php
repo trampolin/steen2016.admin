@@ -84,6 +84,13 @@ class Person_model extends STEEN_Model {
             ]);
     }
 
+    public function byUserId($iUserId) {
+        return $this->_prepareStatement()
+            ->where('p.user_id', $iUserId)
+            ->get()
+            ->row();
+    }
+
     public function find($term) {
         // todo implement smart find
         return $this->get();

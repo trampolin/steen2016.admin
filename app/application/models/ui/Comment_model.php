@@ -38,12 +38,14 @@ class Comment_model extends STEEN_Model
             'c.insert_time',
             'c.insert_user',
             'u.username',
-            'u.avatar'
+            'u.avatar',
+            'p.id as person_id'
 
         ])
             ->from('comment c')
 
-            ->join('users u','u.id = c.insert_user', 'left outer');
+            ->join('users u','u.id = c.insert_user', 'left outer')
+            ->join('person p','p.user_id = u.id', 'left outer');
 
 
     }
