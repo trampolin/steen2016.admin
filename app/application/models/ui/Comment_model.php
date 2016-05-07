@@ -50,12 +50,20 @@ class Comment_model extends STEEN_Model
 
     }
 
+    /**
+     * @param $elementId
+     * @param $targetType
+     * @param $targetId
+     */
     private function _init($elementId, $targetType, $targetId) {
         $this->_elementId = $elementId;
         $this->_targetType = $targetType;
         $this->_targetId = $targetId;
     }
 
+    /**
+     * @return array
+     */
     private function _getComments() {
         $parents = $this->_prepareStatement()
             ->where('c.deleted',0)
@@ -80,6 +88,9 @@ class Comment_model extends STEEN_Model
         return $this->_aComments;
     }
 
+    /**
+     * @return array
+     */
     private function _orderComments() {
         $this->_aOrderedComments = [];
 
@@ -95,6 +106,12 @@ class Comment_model extends STEEN_Model
         return $this->_aOrderedComments;
     }
 
+    /**
+     * @param $elementId
+     * @param $targetType
+     * @param $targetId
+     * @return array
+     */
     public function getCommentSectionData($elementId,$targetType,$targetId) {
         $this->_init($elementId,$targetType,$targetId);
         $this->_getComments();
@@ -108,6 +125,11 @@ class Comment_model extends STEEN_Model
         ];
     }
 
+    /**
+     * @param $elementId
+     * @param $targetType
+     * @param $targetId
+     */
     public function renderCommentSection($elementId,$targetType,$targetId) {
         $this->load->view('partials/modules/comments', $this->getCommentSectionData($elementId,$targetType,$targetId));
     }

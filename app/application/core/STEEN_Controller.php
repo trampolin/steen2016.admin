@@ -63,18 +63,21 @@ abstract class STEEN_Controller extends CI_Controller
      * @param bool|true $bRenderTopRow
      * @param bool|true $bRenderFooter
      */
-    protected function renderPage($sView, $aData = [], $bRenderMenu = true, $bRenderTopRow = true, $bRenderFooter = true)
-    {
-        $this->load->view('partials/main/header', [
-            'bRenderMenu' => $bRenderMenu,
-            'bRenderTopRow' => $bRenderTopRow
-        ]);
+    protected function renderPage($sView, $aData = [], $bRenderMenu = true, $bRenderTopRow = true, $bRenderFooter = true) {
+        if (!$this->bIsAjaxRequest) {
+            $this->load->view('partials/main/header', [
+                'bRenderMenu' => $bRenderMenu,
+                'bRenderTopRow' => $bRenderTopRow
+            ]);
+        }
 
         $this->load->view($sView, $aData);
 
-        $this->load->view('partials/main/footer', [
-            'sJsInclude' => $sView,
-            'bRenderFooter' => $bRenderFooter
-        ]);
+        if (!$this->bIsAjaxRequest) {
+            $this->load->view('partials/main/footer', [
+                'sJsInclude' => $sView,
+                'bRenderFooter' => $bRenderFooter
+            ]);
+        }
     }
 }

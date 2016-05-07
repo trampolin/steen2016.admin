@@ -155,6 +155,13 @@ you can add as many as you like
 
 </script>
 
+<script type="text/javascript">
+    // set up links
+    Steen.init('<?= base_url() ?>');
+        $(document).ready(function() {
+    });
+</script>
+
 <!-- Your GOOGLE ANALYTICS CODE Below -->
 <!--script type="text/javascript">
     var _gaq = _gaq || [];
@@ -172,7 +179,7 @@ you can add as many as you like
 
 </script-->
 
-<?php if(isset($sJsInclude)) : ?>
+<?php if(false && isset($sJsInclude)) : ?>
     <script type="text/javascript" src="<?= base_url() ?>assets/js/steen/<?= $sJsInclude ?>.js"></script>
 <?php endif ?>
 

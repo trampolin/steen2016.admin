@@ -80,10 +80,6 @@
 
     <script src="<?= base_url() ?>assets/js/steen/steen.js"></script>
 
-    <script type="text/javascript">
-        Steen.init('<?= base_url() ?>');
-    </script>
-
 </head>
 
 <!-- #BODY -->

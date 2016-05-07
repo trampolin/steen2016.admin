@@ -6,6 +6,7 @@ Steen = {
 
     init: function(baseUrl) {
         Steen.baseUrl = baseUrl;
+        Steen.request.page.initLinks('body');
     },
 
     messages: {
@@ -74,6 +75,86 @@ Steen = {
                     error(jqXHR.responseText);
                 }
             });
+        },
+
+        page: {
+            currentPage: null,
+
+            load: function(url,data,successCallback,errorCallback) {
+                $.ajax({
+                    type: 'GET',
+                    data: data,
+                    url: url
+                }).success(function(response) {
+                    Steen.request.page.currentPage = url;
+
+                    $('#content').html(response);
+                    Steen.request.page.initLinks('#content');
+                    window.history.replaceState({},document.title,url);
+
+
+                    if (typeof successCallback !== 'undefined') {
+                        successCallback(response);
+                    }
+                    pageSetUp();
+                }).error(function(jqXHR, textStatus, errorThrown) {
+                    Steen.request.page.currentPage = url;
+
+                    $('#content').html(jqXHR.responseText);
+                    Steen.request.page.initLinks('#content');
+
+                    if (typeof errorCallback !== 'undefined') {
+                        errorCallback(jqXHR.responseText);
+                    }
+                });
+            },
+
+            initLinks: function(element) {
+                $(element).find('a').click(function (event) {
+                    var href = $(this).attr('href');
+                    if (Steen.request.page.isLinkInternal(href)) {
+                        event.preventDefault();
+                        Steen.request.page.load(href);
+                        return false; //for good measure
+                    } else {
+                        return true;
+                    }
+                });
+            },
+
+            isLinkInternal: function(href) {
+                return (href.indexOf(Steen.baseUrl) === 0);
+            }
+        }
+
+        //loadPage: function(event) {
+            /*$('a').click(function (event){
+                event.preventDefault();
+                $.ajax({
+                    url: $(this).attr('href')
+                    ,success: function(response) {
+                        alert(response)
+                    }
+                })
+                return false; //for good measure
+            });*/
+        //}
+
+    },
+    
+    widget: {
+        comments: {
+            reload: function(elementId,targetType,targetId) {
+                $.ajax(
+                    Steen.baseUrl + 'widget/comments/load/' + elementId + '/' + targetType + '/' + targetId
+                ).success(function(response) {
+                    $('#' + elementId).closest('.widget-body').html(response);
+
+                }).error(function(jqXHR, textStatus, errorThrown) {
+                    $('#' + elementId).closest('.widget-body').html(jqXHR.responseText);
+                });
+
+            }
         }
     },
 

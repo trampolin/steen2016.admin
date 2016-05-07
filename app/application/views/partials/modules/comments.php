@@ -98,8 +98,11 @@
                     method: 'POST'
                 }).success(function(response) {
                     if (Steen.request.isOk(response)) {
-                        Steen.messages.success('Kommentar geschrieben');
-                        window.location.reload();
+                        //Steen.messages.success('Kommentar geschrieben');
+
+                        Steen.widget.comments.reload('<?= $sElementId ?>',targetType,targetId);
+
+                        //window.location.reload();
                     } else {
                         Steen.messages.error(response.data);
                     }
@@ -124,8 +127,9 @@
                     method: 'POST'
                 }).success(function(response) {
                     if (Steen.request.isOk(response)) {
-                        Steen.messages.success('Kommentar geschrieben');
-                        window.location.reload();
+                        //Steen.messages.success('Kommentar geschrieben');
+                        //window.location.reload();
+                        Steen.widget.comments.reload('<?= $sElementId ?>',targetType,targetId);
                     } else {
                         Steen.messages.error(response.data);
                     }

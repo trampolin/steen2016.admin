@@ -43,3 +43,4 @@
 <?php $this->venue_model->venueModal() ?>
 
 
+<script type="text/javascript" src="<?= base_url() ?>assets/js/steen/venue/details.js"></script>
