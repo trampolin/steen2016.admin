@@ -15,11 +15,14 @@
          data-widget-editbutton="false"
          data-widget-colorbutton="false"
          data-widget-fullscreenbutton="false"
+         data-widget-sortable="false"
          data-widget-deletebutton="false">
 
         <header>
             <span class="widget-icon"> <i class="fa <?= $widgetIcon ?>"></i> </span>
             <h2><?= $widgetTitle ?></h2>
+
+            <?php $widgetHeaderIncludeList->render() ?>
 
         </header>
 
@@ -35,12 +38,7 @@
 
             <!-- widget content -->
             <div class="widget-body no-padding">
-
-                <?php
-
-                $this->load->view($widgetViewPath,$widgetViewData);
-                ?>
-
+                <?php $this->load->view($widgetViewPath,$widgetViewData); ?>
             </div>
             <!-- end widget content -->
 

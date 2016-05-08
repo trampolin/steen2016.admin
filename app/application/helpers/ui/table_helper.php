@@ -6,8 +6,7 @@
  * Time: 01:02
  */
 
-class TableHelper
-{
+class TableHelper {
     // the data to show
     private $_data = array();
     // key mappings -> converts raw keys to user defined values
@@ -28,12 +27,18 @@ class TableHelper
 
     public $template;
 
+    /**
+     * @var TableIncludeList
+     */
+    public $includes;
+
     public static $dateFormat = 'd.m.Y';
 
     function __construct() {
         $this->template = 'partials/modules/data_table';
+        $this->includes = new TableIncludeList();
     }
-
+    
     /**
      * Set the data to show
      *
@@ -175,7 +180,8 @@ class TableHelper
         $result = [
             'tableData' => $this->_data,
             'tableDebug' => $this->debug,
-            'tableId' => $this->tableId
+            'tableId' => $this->tableId,
+            'tableIncludeList' => $this->includes
         ];
 
         if (count($this->_keyMappings) > 0) {
@@ -233,3 +239,5 @@ class TableHelper
     }
 
 }
+
+

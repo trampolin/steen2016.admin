@@ -33,6 +33,8 @@
                     <?php endforeach; ?>
                 <?php endif ?>
 
+                <?php $tableIncludeList->renderHeader(); ?>
+
 
             </tr>
             </thead>
@@ -119,6 +121,7 @@
 
                     <?php endif ?>
 
+                    <?php $tableIncludeList->renderRow($row); ?>
 
                 </tr>
             <?php endforeach; ?>
@@ -127,6 +130,9 @@
         <script type="text/javascript">
 
             $(document).ready(function() {
+
+                <?php $tableIncludeList->renderFooter(); ?>
+
                 Steen.tables.create('#<?= $tableId ?>');
             });
 
@@ -141,12 +147,17 @@
                             <th><?= !isset($tableKeyMappings) ? $key : (!Arrays::element($key, $tableKeyMappings) ? $key : $tableKeyMappings[$key]) ?></th>
                         <?php endif; ?>
                     <?php endforeach; ?>
+
+                    <?php $tableIncludeList->renderHeader(); ?>
                 </tr>
             </thead>
             </table>
             <script type="text/javascript">
 
                 $(document).ready(function() {
+
+
+
                     Steen.tables.create('#<?= $tableId ?>');
                 });
 

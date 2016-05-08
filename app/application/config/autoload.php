@@ -99,6 +99,9 @@ $autoload['helper'] = array(
     'ui/widgets/gig',
     'ui/widgets/person',
     'ui/widgets/band',
+    'ui/widgets/header_includes/include',
+    'ui/widgets/header_includes/search',
+    'ui/widgets/table_includes/include',
     'ui/table',
     'utilities/arrays',
     'utilities/objects'

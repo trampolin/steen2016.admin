@@ -12,6 +12,10 @@ class SteenWidget {
     public $title;
     public $viewPath;
     public $viewData;
+    
+    public $headerIncludeList;
+
+    //public $searchRoute;
 
     public $template;
 
@@ -28,6 +32,8 @@ class SteenWidget {
         $this->icon = 'fa-table';
 
         $this->wrapper = 'partials/modules/widget_wrapper';
+        
+        $this->headerIncludeList = new WidgetHeaderIncludeList($id);
 
         $this->_ci =& get_instance();
     }
@@ -38,7 +44,9 @@ class SteenWidget {
             'widgetTitle' => $this->title,
             'widgetViewPath' => $this->viewPath,
             'widgetViewData' => $this->viewData,
-            'widgetIcon' => $this->icon
+            'widgetIcon' => $this->icon,
+            'widgetHeaderIncludeList' => $this->headerIncludeList
+            //'widgetSearchRoute' => $this->searchRoute
         ];
     }
 

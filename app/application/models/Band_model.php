@@ -89,4 +89,111 @@ class Band_model extends STEEN_Model {
             ->get()
             ->result();
     }
+
+    /**
+     * @param $sTerm
+     * @return mixed
+     */
+    public function search($sTerm) {
+        if (empty($sTerm)) {
+            return [];
+        }
+
+        $aTerms = explode(' ',$sTerm);
+
+        $this->db->select('id,name')
+            ->from('band')
+            ->group_start();
+
+        foreach ($aTerms as $sTerm) {
+            $this->db->or_like('name', $sTerm);
+        }
+
+        $this->db->group_end();
+
+        return $this->db->get()
+            ->result_array();
+    }
+
+    /**
+     * @param $iBandId
+     * @param $iGigId
+     * @return mixed
+     */
+    public function connectToGig($iBandId,$iGigId) {
+        return $this->db->insert('gig_band', [
+            'gig_id' => $iGigId,
+            'band_id' => $iBandId
+        ]);
+    }
+
+    /**
+     * @param $iBandId
+     * @param $iGigId
+     * @return mixed
+     */
+    public function disconnectFromGig($iBandId,$iGigId) {
+        return $this->db->where([
+            'gig_id' => $iGigId,
+            'band_id' => $iBandId
+        ])->delete('gig_band');
+    }
+
+    /**
+     * @param $iBandId
+     * @param $iGigId
+     * @return bool
+     */
+    public function isConnectedToGig($iBandId,$iGigId) {
+        $aRows = $this->db->select('gig_id,band_id')
+            ->from('gig_band')
+            ->where([
+                'gig_id' => $iGigId,
+                'band_id' => $iBandId
+            ])->get()
+            ->result_array();
+
+        return (!empty($aRows));
+    }
+
+    /**
+     * @param $iBandId
+     * @param $iPersonId
+     * @return mixed
+     */
+    public function connectToPerson($iBandId, $iPersonId) {
+        return $this->db->insert('band_person', [
+            'person_id' => $iPersonId,
+            'band_id' => $iBandId
+        ]);
+    }
+
+    /**
+     * @param $iBandId
+     * @param $iPersonId
+     * @return mixed
+     */
+    public function disconnectFromPerson($iBandId, $iPersonId) {
+        return $this->db->where([
+            'person_id' => $iPersonId,
+            'band_id' => $iBandId
+        ])->delete('band_person');
+    }
+
+    /**
+     * @param $iBandId
+     * @param $iPersonId
+     * @return bool
+     */
+    public function isConnectedToPerson($iBandId, $iPersonId) {
+        $aRows = $this->db->select('gig_id,band_id')
+            ->from('gig_band')
+            ->where([
+                'person_id' => $iPersonId,
+                'band_id' => $iBandId
+            ])->get()
+            ->result_array();
+
+        return (!empty($aRows));
+    }
 }
