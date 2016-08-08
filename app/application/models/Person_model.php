@@ -62,7 +62,11 @@ class Person_model extends STEEN_Model {
             ->get()
             ->result();
     }
-    
+
+    /**
+     * @param $iBandId
+     * @return mixed
+     */
     public function byBandId($iBandId) {
         return $this->_prepareStatement()
             ->join('band_person bp','p.id = bp.person_id')
@@ -72,11 +76,19 @@ class Person_model extends STEEN_Model {
             ->result();
     }
 
+    /**
+     * @param $aData
+     * @return int
+     */
     public function insert($aData) {
         $this->db->insert('person', $aData);
         return $this->db->insert_id();
     }
 
+    /**
+     * @param $id
+     * @return int
+     */
     public function delete($id) {
         return $this->db->where('id',$id)
             ->update('person',[
@@ -94,6 +106,47 @@ class Person_model extends STEEN_Model {
     public function find($term) {
         // todo implement smart find
         return $this->get();
+    }
+
+    /**
+     * @param $iPersonId
+     * @param $iVenueId
+     * @return mixed
+     */
+    public function connectToVenue($iPersonId,$iVenueId) {
+        return $this->db->insert('venue_person', [
+            'venue_id' => $iVenueId,
+            'person_id' => $iPersonId
+        ]);
+    }
+
+    /**
+     * @param $iPersonId
+     * @param $iVenueId
+     * @return mixed
+     */
+    public function disconnectFromVenue($iPersonId,$iVenueId) {
+        return $this->db->where([
+            'venue_id' => $iVenueId,
+            'person_id' => $iPersonId
+        ])->delete('venue_person');
+    }
+
+    /**
+     * @param $iPersonId
+     * @param $iVenueId
+     * @return bool
+     */
+    public function isConnectedToVenue($iPersonId,$iVenueId) {
+        $aRows = $this->db->select('gig_id,band_id')
+            ->from('venue_person')
+            ->where([
+                'venue_id' => $iVenueId,
+                'person_id' => $iPersonId
+            ])->get()
+            ->result_array();
+
+        return (!empty($aRows));
     }
 
     /**

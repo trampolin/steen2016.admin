@@ -6,7 +6,17 @@
  * Time: 21:10
  */
 
-
+/**
+ * Class STEEN_Controller
+ *
+ * @property Gig_model gig_model
+ * @property Venue_model venue_model
+ * @property Person_model person_model
+ * @property Band_model band_model
+ * @property user_model user_model
+ * @property Comment_model comment_model
+ *
+ */
 abstract class STEEN_Controller extends CI_Controller
 {
 
@@ -29,22 +39,35 @@ abstract class STEEN_Controller extends CI_Controller
         return $this->user_model->isLoggedIn();
     }
 
+    /**
+     *
+     */
     protected function redirectLogin() {
         redirect(base_url().'user/login');
     }
 
+    /**
+     * @param string $error
+     */
     protected function renderLoginPage($error = '') {
         $this->renderPage('user/login',[
             'error' => $error
         ],false,false,false);
     }
 
+    /**
+     * @param string $error
+     */
     protected function renderRegisterPage($error = '') {
         $this->renderPage('user/register',[
             'error' => $error
         ],false,false,false);
     }
 
+    /**
+     * @param $data
+     * @param bool $bSuccess
+     */
     protected function jsonOutput($data,$bSuccess = true) {
         $aResponse = [
             'data' => $data,
