@@ -202,8 +202,6 @@ Steen = {
 
                 var url = Steen.baseUrl + 'widget/band/load/' + targetType + '/' + (targetId ? targetId : '');
 
-                Steen.messages.success(url,'reload widget');
-
                 $.ajax(
                     url
                 ).success(function(response) {
