@@ -146,10 +146,8 @@ you can add as many as you like
 
 <script src="<?= base_url() ?>assets/js/plugin/jquery-form/jquery-form.min.js"></script>
 
-<script>
-    $(document).ready(function() {
-
-        // DO NOT REMOVE : GLOBAL FUNCTIONS!
+<script type="text/javascript">
+    Steen.request.page.events.addEvent(function() {
         pageSetUp();
     });
 
@@ -157,8 +155,8 @@ you can add as many as you like
 
 <script type="text/javascript">
     // set up links
-    Steen.init('<?= base_url() ?>');
-        $(document).ready(function() {
+    $(document).ready(function() {
+        Steen.init('<?= base_url() ?>');
     });
 </script>
 

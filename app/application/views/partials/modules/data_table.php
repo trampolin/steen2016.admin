@@ -127,14 +127,12 @@
             <?php endforeach; ?>
             </tbody>
         </table>
+        
+        <?php $tableIncludeList->renderFooter(); ?>
+        
         <script type="text/javascript">
 
-            $(document).ready(function() {
-
-                <?php $tableIncludeList->renderFooter(); ?>
-
-                Steen.tables.create('#<?= $tableId ?>');
-            });
+            Steen.request.page.events.addDataTable('#<?= $tableId ?>');
 
         </script>
     <?php else : ?>
@@ -152,14 +150,12 @@
                 </tr>
             </thead>
             </table>
+
+            <?php $tableIncludeList->renderFooter(); ?>
+            
             <script type="text/javascript">
 
-                $(document).ready(function() {
-
-
-
-                    Steen.tables.create('#<?= $tableId ?>');
-                });
+                Steen.request.page.events.addDataTable('#<?= $tableId ?>');
 
             </script>
         <?php else : ?>

@@ -69,7 +69,8 @@ if (!isset($oGig->showDetailsButton)) {
                 <span id="update-gig-form-delete-gig" class="btn btn-danger">Löschen</span>
 
                 <script type="text/javascript">
-                    $(document).ready(function() {
+
+                    Steen.request.page.events.addEvent(function() {
                         Steen.forms.createAjaxForm(
                             '#update-gig-form',
                             'data/gig/submit/<?= $oGig->id ?>',
@@ -85,6 +86,7 @@ if (!isset($oGig->showDetailsButton)) {
                             Steen.messages.error('Noch nicht umgesetzt! ;-)')
                         });
                     });
+                    
                 </script>
             <?php } ?>
         </footer>

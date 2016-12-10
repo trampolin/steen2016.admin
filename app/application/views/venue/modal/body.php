@@ -64,7 +64,7 @@
         <script type="text/javascript">
             $(document).ready(function() {
                 $('#create-or-update-venue-form').ajaxForm({
-                    url: '/data/venue/submit/new',
+                    url: Steen.baseUrl + 'data/venue/submit/new',
                     type: 'post',
                     success: function(response) {
                         if (Steen.request.isOk(response)) {

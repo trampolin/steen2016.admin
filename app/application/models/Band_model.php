@@ -196,4 +196,6 @@ class Band_model extends STEEN_Model {
 
         return (!empty($aRows));
     }
+
+
 }

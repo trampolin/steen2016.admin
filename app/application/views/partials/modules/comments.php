@@ -82,7 +82,7 @@
 
 
     <script type="text/javascript">
-        $(document).ready(function() {
+        Steen.request.page.events.addEvent(function() {
 
             $('#<?= $sElementId ?>-write').click(function() {
 

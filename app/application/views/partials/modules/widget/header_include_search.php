@@ -18,7 +18,7 @@
         Some helpful information</b-->
 
     <script type="text/javascript">
-        $(document).ready(function() {
+        Steen.request.page.events.addEvent(function() {
              $('#<?= $widgetHeaderIncludeId ?>-input').autocomplete({
 
                  source: function( request, response ) {
@@ -47,13 +47,15 @@
                  },
 
                  select: function(event, ui) {
-                     var bandId = ui.item.id;
+                     var selectId = ui.item.id;
 
                      $.ajax(
-                         Steen.baseUrl + 'data/connect/<?= $widgetHeaderIncludeType ?>/' + bandId + '/<?= $widgetHeaderIncludeConnectType ?>/<?= $widgetHeaderIncludeConnectTargetId ?>'
+                         Steen.baseUrl + 'data/connect/<?= $widgetHeaderIncludeType ?>/' + selectId + '/<?= $widgetHeaderIncludeConnectType ?>/<?= $widgetHeaderIncludeConnectTargetId ?>'
                      ).success(function(response) {
                          if (Steen.request.isOk(response)) {
                              // todo reload widget;
+                             Steen.messages.success('Yeah','Yeah');
+                             Steen.widget['<?= $widgetHeaderIncludeType ?>'].reload('<?= $widgetHeaderIncludeId ?>','<?= $widgetHeaderIncludeConnectType ?>','<?= $widgetHeaderIncludeConnectTargetId ?>');
                          } else {
                              Steen.messages.error(response.data);
                          }

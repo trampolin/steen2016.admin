@@ -73,7 +73,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
-/*$db['default'] = array(
+$db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'dd23610.kasserver.com',
 	'username' => 'd01fdfdd',
@@ -93,9 +93,9 @@ $query_builder = TRUE;
 	'stricton' => FALSE,
 	'failover' => array(),
 	'save_queries' => TRUE
-);*/
+);
 
-$db['default'] = array(
+/*$db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => '127.0.0.1',
 	'username' => 'root',
@@ -115,4 +115,4 @@ $db['default'] = array(
 	'stricton' => FALSE,
 	'failover' => array(),
 	'save_queries' => TRUE
-);
+);*/

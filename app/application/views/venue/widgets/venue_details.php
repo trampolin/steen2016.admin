@@ -78,7 +78,7 @@ if (!isset($oVenue->showDetailsButton)) {
             </button>
 
                 <script type="text/javascript">
-                    $(document).ready(function() {
+                    Steen.request.page.events.addEvent(function() {
                         Steen.forms.createAjaxForm(
                             '#update-venue-form',
                             'data/venue/submit/<?= $oVenue->id ?>',
@@ -97,7 +97,7 @@ if (!isset($oVenue->showDetailsButton)) {
 
 </form>
 <script>
-    $(document).ready(function() {
+    Steen.request.page.events.addEvent(function() {
 
         // todo irgendwie besser machen ;)
 

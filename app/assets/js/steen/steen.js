@@ -7,6 +7,7 @@ Steen = {
     init: function(baseUrl) {
         Steen.baseUrl = baseUrl;
         Steen.request.page.initLinks('body');
+        Steen.request.page.events.fire();
     },
 
     messages: {
@@ -79,6 +80,41 @@ Steen = {
 
         page: {
             currentPage: null,
+            events: {
+                dataTables: [],
+                events: [],
+
+                fire: function () {
+                    // first fire events
+                    for (var i in Steen.request.page.events.events) {
+                        Steen.request.page.events.events[i]();
+                    }
+
+                    // then fire datatables
+                    for (var i in Steen.request.page.events.dataTables) {
+                        Steen.tables.create(
+                            Steen.request.page.events.dataTables[i].selector,
+                            Steen.request.page.events.dataTables[i].options
+                        );
+                    }
+
+                    Steen.request.page.events.dataTables = [];
+                    Steen.request.page.events.events = [];
+                },
+
+                addDataTable: function(selector, options) {
+                    Steen.request.page.events.dataTables.push({
+                        selector: selector,
+                        options: options
+                    });
+                },
+
+                addEvent: function (event) {
+                    Steen.request.page.events.events.push(event);
+                }
+            },
+
+
 
             load: function(url,data,successCallback,errorCallback) {
                 $.ajax({
@@ -90,6 +126,8 @@ Steen = {
 
                     $('#content').html(response);
                     Steen.request.page.initLinks('#content');
+                    Steen.request.page.events.fire();
+
                     window.history.replaceState({},document.title,url);
 
 
@@ -102,6 +140,7 @@ Steen = {
 
                     $('#content').html(jqXHR.responseText);
                     Steen.request.page.initLinks('#content');
+                    Steen.request.page.events.fire();
 
                     if (typeof errorCallback !== 'undefined') {
                         errorCallback(jqXHR.responseText);
@@ -110,7 +149,7 @@ Steen = {
             },
 
             initLinks: function(element) {
-                $(element).find('a').click(function (event) {
+                $(element).find('a').off('click').click(function (event) {
                     var href = $(this).attr('href');
                     if (Steen.request.page.isLinkInternal(href)) {
                         event.preventDefault();
@@ -143,6 +182,7 @@ Steen = {
     },
     
     widget: {
+
         comments: {
             reload: function(elementId,targetType,targetId) {
                 $.ajax(
@@ -154,6 +194,24 @@ Steen = {
                     $('#' + elementId).closest('.widget-body').html(jqXHR.responseText);
                 });
 
+            }
+        },
+
+        band: {
+            reload: function(elementId,targetType,targetId) {
+
+                var url = Steen.baseUrl + 'widget/band/load/' + targetType + '/' + (targetId ? targetId : '');
+
+                Steen.messages.success(url,'reload widget');
+
+                $.ajax(
+                    url
+                ).success(function(response) {
+                    $('#' + elementId).closest('.jarviswidget').find('.widget-body').html(response);
+                    Steen.request.page.events.fire();
+                }).error(function(jqXHR, textStatus, errorThrown) {
+                    $('#' + elementId).closest('.widget-body').html(jqXHR.responseText);
+                });
             }
         }
     },

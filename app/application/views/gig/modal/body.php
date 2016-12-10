@@ -158,9 +158,11 @@
         </form>
 
         <script type="text/javascript">
-            $('#create-or-update-gig-form').ajaxForm({
-                url: '/modal/gig/submit/',
-                type: 'post'
+            Steen.request.page.events.addEvent(function() {
+                $('#create-or-update-gig-form').ajaxForm({
+                    url: '/modal/gig/submit/',
+                    type: 'post'
+                });
             });
         </script>
 

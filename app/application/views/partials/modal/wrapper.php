@@ -32,48 +32,50 @@
 <?php if($modalLoadFunctionName !== null && $modalAjaxRoute !== null && $modalDataAttribute !== null) : ?>
     <script type="text/javascript">
 
-        $('#<?= $modalId ?>-error').html('');
-        $('#<?= $modalId ?>-title').html('<?= $modalTitle ?>');
-        $('#<?= $modalId ?>-spinner').hide();
-        $('#<?= $modalId ?>-details').hide();
-        $('#<?= $modalId ?>-errorContainer').hide();
+        Steen.request.page.events.addEvent(function() {
+            $('#<?= $modalId ?>-error').html('');
+            $('#<?= $modalId ?>-title').html('<?= $modalTitle ?>');
+            $('#<?= $modalId ?>-spinner').hide();
+            $('#<?= $modalId ?>-details').hide();
+            $('#<?= $modalId ?>-errorContainer').hide();
 
-        // function name
-        var <?= $modalLoadFunctionName ?> = function(sendingData) {
-            var canCreateNew = <?= $modalNew ? 'true' : 'false' ?>;
+            // function name
+            var <?= $modalLoadFunctionName ?> = function(sendingData) {
+                var canCreateNew = <?= $modalNew ? 'true' : 'false' ?>;
 
-            if (typeof sendingData !== 'undefined' || canCreateNew) {
-                $('#<?= $modalId ?>-error').html('');
-                $('#<?= $modalId ?>-spinner').show();
-                $('#<?= $modalId ?>-details').hide();
-                $('#<?= $modalId ?>-errorContainer').hide();
-
-                $.ajax({
-                    url: '<?= $modalAjaxRoute ?>' + (typeof sendingData !== 'undefined' ? sendingData : 'new')
-                }).success(function (response) {
-                    $('#<?= $modalId ?>-spinner').hide();
-                    $('#<?= $modalId ?>-details').show();
+                if (typeof sendingData !== 'undefined' || canCreateNew) {
+                    $('#<?= $modalId ?>-error').html('');
+                    $('#<?= $modalId ?>-spinner').show();
+                    $('#<?= $modalId ?>-details').hide();
                     $('#<?= $modalId ?>-errorContainer').hide();
-                    $('#<?= $modalId ?>-details').html(response);
-                }).error(function (jqXHR, textStatus, errorThrown) {
-                    $('#<?= $modalId ?>-error').html(jqXHR.responseText);
+
+                    $.ajax({
+                        url: '<?= $modalAjaxRoute ?>' + (typeof sendingData !== 'undefined' ? sendingData : 'new')
+                    }).success(function (response) {
+                        $('#<?= $modalId ?>-spinner').hide();
+                        $('#<?= $modalId ?>-details').show();
+                        $('#<?= $modalId ?>-errorContainer').hide();
+                        $('#<?= $modalId ?>-details').html(response);
+                    }).error(function (jqXHR, textStatus, errorThrown) {
+                        $('#<?= $modalId ?>-error').html(jqXHR.responseText);
+                        $('#<?= $modalId ?>-spinner').hide();
+                        $('#<?= $modalId ?>-details').hide();
+                        $('#<?= $modalId ?>-errorContainer').show();
+                    });
+                } else {
+                    $('#<?= $modalId ?>-error').html('No data provided');
                     $('#<?= $modalId ?>-spinner').hide();
                     $('#<?= $modalId ?>-details').hide();
                     $('#<?= $modalId ?>-errorContainer').show();
-                });
-            } else {
-                $('#<?= $modalId ?>-error').html('No data provided');
-                $('#<?= $modalId ?>-spinner').hide();
-                $('#<?= $modalId ?>-details').hide();
-                $('#<?= $modalId ?>-errorContainer').show();
-            }
-        };
+                }
+            };
 
-        $('#<?= $modalId ?>').on('show.bs.modal', function (e) {
-            //get data-id attribute of the clicked element
-            var sendingData = $(e.relatedTarget).attr('<?= $modalDataAttribute ?>');
-            //gwstat.debug(sendingData);
-            <?= $modalLoadFunctionName ?>(sendingData);
+            $('#<?= $modalId ?>').on('show.bs.modal', function (e) {
+                //get data-id attribute of the clicked element
+                var sendingData = $(e.relatedTarget).attr('<?= $modalDataAttribute ?>');
+                //gwstat.debug(sendingData);
+                <?= $modalLoadFunctionName ?>(sendingData);
+            });
         });
     </script>
 <?php endif ?>

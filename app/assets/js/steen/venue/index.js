@@ -1,7 +1,7 @@
 /**
  * Created by rmahr1 on 08.12.15.
  */
-$(document).ready(function() {
+Steen.request.page.events.addEvent(function() {
 
     $('.venue-delete').click(function() {
         var id = $(this).data('id');

@@ -50,8 +50,21 @@ class SteenWidget {
         ];
     }
 
+    /**
+     * @param bool $output
+     * @return mixed
+     */
     public function render($output = false) {
         return $this->_ci->load->view($this->wrapper,$this->getData(),$output);
+    }
+
+
+    /**
+     * @param bool $output
+     * @return mixed
+     */
+    public function renderWidgetBody($output = false) {
+        return $this->_ci->load->view($this->viewPath,$this->getData(), $output);
     }
 }
 
