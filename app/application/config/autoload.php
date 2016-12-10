@@ -101,7 +101,9 @@ $autoload['helper'] = array(
     'ui/widgets/band',
     'ui/widgets/header_includes/include',
     'ui/widgets/header_includes/search',
+
     'ui/widgets/table_includes/include',
+
     'ui/table',
     'utilities/arrays',
     'utilities/objects'
@@ -155,5 +157,6 @@ $autoload['model'] = [
     'Person_model' => 'person_model',
     'Band_model' => 'band_model',
     'user_model' => 'user_model',
-    'ui/Comment_model' => 'comment_model'
+    'ui/Comment_model' => 'comment_model',
+    'system/Log_model' => 'log_model'
 ];

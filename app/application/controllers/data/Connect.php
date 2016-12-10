@@ -63,4 +63,19 @@ class Connect extends Ajax_Controller {
                 $this->jsonOutput('cannot connect person and ' . $sTargetType,false);
         }
     }
+
+    /**
+     * @param $iVenueId
+     * @param $sTargetType
+     * @param $iTargetId
+     */
+    public function venue($iVenueId,$sTargetType,$iTargetId) {
+        switch ($sTargetType) {
+            case 'person':
+                $this->person($iTargetId,'venue',$iVenueId);
+                break;
+            default:
+                $this->jsonOutput('cannot connect venue and ' . $sTargetType,false);
+        }
+    }
 }

@@ -13,6 +13,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @link        http://community-auth.com
  */
 
+
+/**
+ * Class STEEN_Model
+ * @property Log_model log_model
+ */
 class STEEN_Model extends CI_Model {
 
 	/**

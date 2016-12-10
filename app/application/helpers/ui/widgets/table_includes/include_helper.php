@@ -6,6 +6,9 @@
  * Time: 09:32
  */
 
+/**
+ * Class TableInclude
+ */
 class TableInclude {
 
     public $headerTemplate;
@@ -52,6 +55,9 @@ class TableInclude {
 
 }
 
+/**
+ * Class TableIncludeList
+ */
 class TableIncludeList {
     protected $ci;
 

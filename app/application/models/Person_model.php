@@ -114,10 +114,15 @@ class Person_model extends STEEN_Model {
      * @return mixed
      */
     public function connectToVenue($iPersonId,$iVenueId) {
-        return $this->db->insert('venue_person', [
+
+        $aData = [
             'venue_id' => $iVenueId,
             'person_id' => $iPersonId
-        ]);
+        ];
+
+        $this->log_model->log('connect',$aData);
+
+        return $this->db->insert('venue_person', $aData);
     }
 
     /**
@@ -126,10 +131,15 @@ class Person_model extends STEEN_Model {
      * @return mixed
      */
     public function disconnectFromVenue($iPersonId,$iVenueId) {
-        return $this->db->where([
+
+        $aData = [
             'venue_id' => $iVenueId,
             'person_id' => $iPersonId
-        ])->delete('venue_person');
+        ];
+
+        $this->log_model->log('disconnect',$aData);
+
+        return $this->db->where($aData)->delete('venue_person');
     }
 
     /**

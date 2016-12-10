@@ -15,6 +15,7 @@
  * @property Band_model band_model
  * @property user_model user_model
  * @property Comment_model comment_model
+ * @property Log_model log_model
  *
  */
 abstract class STEEN_Controller extends CI_Controller
@@ -30,6 +31,7 @@ abstract class STEEN_Controller extends CI_Controller
 
         // store if it's ajax request
         $this->bIsAjaxRequest = $this->input->is_ajax_request();
+        $this->log_model->log('construct');
     }
 
     /**

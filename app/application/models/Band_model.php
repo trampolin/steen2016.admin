@@ -121,10 +121,15 @@ class Band_model extends STEEN_Model {
      * @return mixed
      */
     public function connectToGig($iBandId,$iGigId) {
-        return $this->db->insert('gig_band', [
+
+        $aData = [
             'gig_id' => $iGigId,
             'band_id' => $iBandId
-        ]);
+        ];
+
+        $this->log_model->log('connect',$aData);
+
+        return $this->db->insert('gig_band', $aData);
     }
 
     /**
@@ -133,10 +138,15 @@ class Band_model extends STEEN_Model {
      * @return mixed
      */
     public function disconnectFromGig($iBandId,$iGigId) {
-        return $this->db->where([
+
+        $aData = [
             'gig_id' => $iGigId,
             'band_id' => $iBandId
-        ])->delete('gig_band');
+        ];
+
+        $this->log_model->log('disconnect',$aData);
+
+        return $this->db->where($aData)->delete('gig_band');
     }
 
     /**
@@ -162,10 +172,15 @@ class Band_model extends STEEN_Model {
      * @return mixed
      */
     public function connectToPerson($iBandId, $iPersonId) {
-        return $this->db->insert('band_person', [
+
+        $aData = [
             'person_id' => $iPersonId,
             'band_id' => $iBandId
-        ]);
+        ];
+
+        $this->log_model->log('connect', $aData);
+
+        return $this->db->insert('band_person', $aData);
     }
 
     /**
@@ -174,10 +189,15 @@ class Band_model extends STEEN_Model {
      * @return mixed
      */
     public function disconnectFromPerson($iBandId, $iPersonId) {
-        return $this->db->where([
+
+        $aData = [
             'person_id' => $iPersonId,
             'band_id' => $iBandId
-        ])->delete('band_person');
+        ];
+
+        $this->log_model->log('disconnect', $aData);
+
+        return $this->db->where($aData)->delete('band_person');
     }
 
     /**
