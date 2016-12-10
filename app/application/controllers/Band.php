@@ -20,6 +20,7 @@ class Band extends Admin_Controller {
         $bandWidget = new BandDetailsWidget('band-details-band-widget',$oBand);
 
         $personWidget = new PersonListWidget('band-details-person-widget', $aPersons);
+        $personWidget->headerIncludeList->addHeaderInclude(new WidgetHeaderSearchInclude('person','band',$id));
 
         $commentWidget = new SteenWidget('band-details-comments', 'Kommentare', 'partials/modules/comments', $aComments);
         $commentWidget->icon = 'fa-comments';

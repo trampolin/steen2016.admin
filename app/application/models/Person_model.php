@@ -76,6 +76,36 @@ class Person_model extends STEEN_Model {
             ->result();
     }
 
+    public function search($sTerm) {
+        if (empty($sTerm)) {
+            return [];
+        }
+
+        $aTerms = explode(' ',$sTerm);
+
+        $this->db->select('id,firstname,lastname')
+            ->from('person')
+            ->group_start();
+
+        foreach ($aTerms as $sTerm) {
+            $this->db->or_like('firstname', $sTerm);
+            $this->db->or_like('lastname', $sTerm);
+            $this->db->or_like('email', $sTerm);
+            $this->db->or_like('phone', $sTerm);
+        }
+
+        $this->db->group_end();
+
+        $aData = $this->db->get()
+            ->result_array();
+
+        foreach ($aData as $i => $aRow) {
+            $aData[$i]['name'] = $aRow['firstname'] . ' ' . $aRow['lastname'];
+        }
+
+        return $aData;
+    }
+
     /**
      * @param $aData
      * @return int
@@ -83,6 +113,17 @@ class Person_model extends STEEN_Model {
     public function insert($aData) {
         $this->db->insert('person', $aData);
         return $this->db->insert_id();
+    }
+
+    /**
+     * @param int $iPersonId
+     * @param $aData
+     * @return int
+     */
+    public function update($iPersonId,$aData) {
+        $this->db->where('id', $iPersonId)
+            ->update('person', $aData);
+        return $iPersonId;
     }
 
     /**

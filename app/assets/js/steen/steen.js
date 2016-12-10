@@ -183,6 +183,21 @@ Steen = {
     
     widget: {
 
+        reload: function(elementId,baseType,targetType,targetId) {
+            var url = Steen.baseUrl + 'widget/'+baseType+'/load/' + targetType + '/' + (targetId ? targetId : '');
+            $.ajax(
+                url
+            ).success(function(response) {
+                var widgetBody = $('#' + elementId).closest('.jarviswidget').find('.widget-body');
+                $(widgetBody).html(response);
+                Steen.request.page.initLinks(widgetBody);
+                Steen.request.page.events.fire();
+            }).error(function(jqXHR, textStatus, errorThrown) {
+                var widgetBody = $('#' + elementId).closest('.jarviswidget').find('.widget-body');
+                $(widgetBody).html(jqXHR.responseText);
+            });
+        },
+
         comments: {
             reload: function(elementId,targetType,targetId) {
                 $.ajax(
@@ -199,13 +214,23 @@ Steen = {
 
         band: {
             reload: function(elementId,targetType,targetId) {
+                Steen.widget.reload(elementId,'band',targetType,targetId);
+            }
+        },
 
-                var url = Steen.baseUrl + 'widget/band/load/' + targetType + '/' + (targetId ? targetId : '');
+        person: {
+            reload: function(elementId,targetType,targetId) {
+
+                var url = Steen.baseUrl + 'widget/person/load/' + targetType + '/' + (targetId ? targetId : '');
 
                 $.ajax(
                     url
                 ).success(function(response) {
-                    $('#' + elementId).closest('.jarviswidget').find('.widget-body').html(response);
+
+                    var widgetBody = $('#' + elementId).closest('.jarviswidget').find('.widget-body');
+
+                    $(widgetBody).html(response);
+                    Steen.request.page.initLinks(widgetBody);
                     Steen.request.page.events.fire();
                 }).error(function(jqXHR, textStatus, errorThrown) {
                     $('#' + elementId).closest('.widget-body').html(jqXHR.responseText);

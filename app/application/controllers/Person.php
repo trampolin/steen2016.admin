@@ -8,6 +8,18 @@
 
 class Person extends Admin_Controller {
 
+    public function create() {
+        $id = $this->person_model->insert([
+            'insert_user' => $this->session->user_id
+        ]);
+
+        redirect(base_url() . 'person/details/' . $id . '/new');
+    }
+
+    /**
+     * @param $id
+     * @param null $mode
+     */
     public function details($id,$mode = null) {
 
         $oPerson = $this->person_model->byId($id);
@@ -21,6 +33,7 @@ class Person extends Admin_Controller {
 
         /*$gigWidget = new GigListWidget('gig-details-gig-widget',$aGigs);*/
         $bandWidget = new BandListWidget('person-details-band-widget',$aBands);
+        $bandWidget->headerIncludeList->addHeaderInclude(new WidgetHeaderSearchInclude('band','person',$id));
         
         $venueWidget = new VenueListWidget('person-details-venue-widget',$aVenues);
 

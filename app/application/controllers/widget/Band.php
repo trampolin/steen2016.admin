@@ -17,12 +17,6 @@ class Band extends Content_Controller {
      * @param $iTargetId
      */
     public function load($sType,$iTargetId = null) {
-        //$this->comment_model->renderCommentSection($elementId,$targetType,$targetId);
-
-        //$aFilter = $this->input->post('filter');
-
-        $sCustomId = $this->input->post('custom_widget_id');
-
         switch ($sType) {
             case 'gig':
 
@@ -35,6 +29,18 @@ class Band extends Content_Controller {
                 ));
                 $bandWidget->headerIncludeList->addHeaderInclude(new WidgetHeaderSearchInclude('band','gig',$iTargetId));
                 $bandWidget->renderWidgetBody();
+                break;
+            case 'person':
+                $aBands = $this->band_model->byPersonId($iTargetId);
+                $bandWidget = new BandListWidget('person-details-band-widget',$aBands);
+                /*$bandWidget->getTableHelper()->includes->add(new TableInclude(
+                    'partials/modules/table/disconnect_include/header',
+                    'partials/modules/table/disconnect_include/row',
+                    'partials/modules/table/disconnect_include/footer'
+                ));*/
+                $bandWidget->headerIncludeList->addHeaderInclude(new WidgetHeaderSearchInclude('band','person',$iTargetId));
+                $bandWidget->renderWidgetBody();
+                break;
         }
     }
 }

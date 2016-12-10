@@ -206,8 +206,8 @@ class Band_model extends STEEN_Model {
      * @return bool
      */
     public function isConnectedToPerson($iBandId, $iPersonId) {
-        $aRows = $this->db->select('gig_id,band_id')
-            ->from('gig_band')
+        $aRows = $this->db->select('person_id,band_id')
+            ->from('band_person')
             ->where([
                 'person_id' => $iPersonId,
                 'band_id' => $iBandId
