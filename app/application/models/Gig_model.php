@@ -46,6 +46,18 @@ class Gig_model extends STEEN_Model {
     }
 
     /**
+     * @return mixed
+     */
+    public function upcoming() {
+        $sDate = date('Y-m-d');
+
+        return $this->_prepareStatement()
+            ->where('g.date >= ', $sDate)
+            ->get()
+            ->result();
+    }
+
+    /**
      * @param $id
      * @return mixed
      */

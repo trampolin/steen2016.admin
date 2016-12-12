@@ -58,7 +58,7 @@ if (!isset($oPerson->showDetailsButton)) {
                 Speichern
             </button>
 
-            <span class="btn btn-danger">Löschen</span>
+            <span class="btn btn-danger" id="person-details-person-<?= $oPerson->id ?>">Löschen</span>
 
             <script type="text/javascript">
                 Steen.request.page.events.addEvent(function() {
@@ -72,6 +72,28 @@ if (!isset($oPerson->showDetailsButton)) {
                             Steen.messages.error(error);
                         }
                     );
+
+                });
+
+                Steen.request.page.events.addEvent(function () {
+
+                    $('#person-details-person-<?= $oPerson->id ?>').click(function() {
+
+                        Steen.messages.confirm('Person wirklich Löschen?','Frage',function() {
+
+                            Steen.request.simpleCall('data/person/delete/<?= $oPerson->id ?>',
+                                function (response) {
+                                    Steen.messages.success('Person gelöscht');
+                                    Steen.request.page.load('/home');
+                                },
+                                function (error) {
+                                    Steen.messages.error(error);
+                                }
+                            )
+
+                        })
+
+                    });
 
                 });
             </script>

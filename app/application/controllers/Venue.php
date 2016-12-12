@@ -20,6 +20,17 @@ class Venue extends Admin_Controller {
 
     }
 
+    /**
+     *
+     */
+    public function create() {
+        $id = $this->venue_model->insert([
+            'insert_user' => $this->session->user_id
+        ]);
+
+        redirect(base_url() . 'venue/details/' . $id . '/new');
+    }
+
     public function details($id) {
 
         $oVenue = $this->venue_model->byId($id);
@@ -31,6 +42,10 @@ class Venue extends Admin_Controller {
         $commentWidget = new SteenWidget('venue-details-comments', 'Kommentare', 'partials/modules/comments', $aComments);
         $gigWidget = new GigListWidget('venue-details-gigs-widget', $aGigs);
         $personWidget = new PersonListWidget('venue-details-person-widget',$aPersons);
+        $personWidget->headerIncludeList->addHeaderInclude(new WidgetHeaderSearchInclude('person','venue',$id));
+
+        $personWidget->getTableHelper()->includes->add(new DisconnectTableInclude('venue','person',$id,'id'));
+
         $bandWidget = new BandListWidget('venue-details-band-widget',$aBands);
         $venueWidget = new VenueDetailsWidget('venue-details-venue-widget',$oVenue);
 

@@ -35,7 +35,11 @@ class SteenTableWidget extends SteenWidget {
      * @return mixed
      */
     public function renderWidgetBody($output = false) {
-        return $this->_ci->load->view($this->viewPath,$this->_tableHelper->getTableOptions(), $output);
+
+        $aData =
+            array_merge($this->getData(), $this->_tableHelper->getTableOptions());
+
+        return $this->_ci->load->view($this->viewPath,$aData, $output);
     }
 
     /**

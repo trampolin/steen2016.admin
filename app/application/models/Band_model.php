@@ -50,6 +50,37 @@ class Band_model extends STEEN_Model {
     }
 
     /**
+     * @param $aData
+     * @return mixed
+     */
+    public function insert($aData) {
+        $this->db->insert('band', $aData);
+        return $this->db->insert_id();
+    }
+
+    /**
+     * @param $iBandId
+     * @param $aBand
+     * @return mixed
+     */
+    public function update($iBandId, $aBand) {
+        $this->db->where('id', $iBandId)
+            ->update('band', $aBand);
+        return $iBandId;
+    }
+
+    /**
+     * @param $id
+     * @return int
+     */
+    public function delete($id) {
+        return $this->db->where('id',$id)
+            ->update('band',[
+                'deleted' => 1
+            ]);
+    }
+
+    /**
      * @param $iVenueId
      * @return mixed
      */
@@ -109,7 +140,7 @@ class Band_model extends STEEN_Model {
             $this->db->or_like('name', $sTerm);
         }
 
-        $this->db->group_end();
+        $this->db->group_end()->where('deleted', 0);;
 
         return $this->db->get()
             ->result_array();

@@ -6,7 +6,7 @@
  * Time: 09:20
  */
 
-class Connect extends Ajax_Controller {
+class Disconnect extends Ajax_Controller {
 
     public function __construct() {
         parent::__construct();
@@ -34,5 +34,54 @@ class Connect extends Ajax_Controller {
                 $this->jsonOutput('cannot disconnect band and ' . $sTargetType,false);
         }
 
+    }
+
+    /**
+     * @param $iGigId
+     * @param $sTargetType
+     * @param $iTargetId
+     */
+    public function gig($iGigId,$sTargetType,$iTargetId) {
+        switch ($sTargetType) {
+            case 'band':
+                $this->band($iTargetId,'gig',$iGigId);
+                break;
+            default:
+                $this->jsonOutput('cannot disconnect gig and ' . $sTargetType,false);
+        }
+    }
+
+    /**
+     * @param $iPersonId
+     * @param $sTargetType
+     * @param $iTargetId
+     */
+    public function person($iPersonId, $sTargetType, $iTargetId) {
+        switch ($sTargetType) {
+            case 'venue':
+                $this->person_model->disconnectFromVenue($iPersonId,$iTargetId);
+                $this->jsonOutput('disconnected');
+                break;
+            case 'band':
+                $this->band($iTargetId,'person',$iPersonId);
+                break;
+            default:
+                $this->jsonOutput('cannot disconnect person and ' . $sTargetType,false);
+        }
+    }
+
+    /**
+     * @param $iVenueId
+     * @param $sTargetType
+     * @param $iTargetId
+     */
+    public function venue($iVenueId,$sTargetType,$iTargetId) {
+        switch ($sTargetType) {
+            case 'person':
+                $this->person($iTargetId,'venue',$iVenueId);
+                break;
+            default:
+                $this->jsonOutput('cannot disconnect gig and ' . $sTargetType,false);
+        }
     }
 }

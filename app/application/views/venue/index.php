@@ -8,13 +8,13 @@
 
 ?>
 
-<section id="page-toprow">
+<!--section id="page-toprow">
     <div class="row">
         <div class="col-xs-12">
             <button class="btn btn-primary" data-toggle="modal" data-target="#venueModal">Venue anlegen</button>
         </div>
     </div>
-</section>
+</section-->
 
 <!-- widget grid -->
 <section id="widget-grid" class="">

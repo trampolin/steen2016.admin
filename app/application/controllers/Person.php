@@ -34,6 +34,7 @@ class Person extends Admin_Controller {
         /*$gigWidget = new GigListWidget('gig-details-gig-widget',$aGigs);*/
         $bandWidget = new BandListWidget('person-details-band-widget',$aBands);
         $bandWidget->headerIncludeList->addHeaderInclude(new WidgetHeaderSearchInclude('band','person',$id));
+        $bandWidget->getTableHelper()->includes->add(new DisconnectTableInclude('person','band',$id,'id'));
         
         $venueWidget = new VenueListWidget('person-details-venue-widget',$aVenues);
 

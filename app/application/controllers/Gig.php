@@ -34,13 +34,9 @@ class Gig extends Admin_Controller {
 
         $venueWidget = new VenueDetailsWidget('gig-details-venue-widget',$oVenue,false,true);
         $gigWidget = new GigDetailsWidget('gig-details-gig-widget',$oGig,true,false);
+
         $bandWidget = new BandListWidget('gig-details-band-widget',$aBands);
-        $bandWidget->getTableHelper()->includes->add(new TableInclude(
-            'partials/modules/table/disconnect_include/header',
-            'partials/modules/table/disconnect_include/row',
-            'partials/modules/table/disconnect_include/footer'
-        ));
-        
+        $bandWidget->getTableHelper()->includes->add(new DisconnectTableInclude('gig','band',$id,'id'));
         $bandWidget->headerIncludeList->addHeaderInclude(new WidgetHeaderSearchInclude('band','gig',$id));
 
         $commentWidget = new SteenWidget('gig-details-comments', 'Kommentare', 'partials/modules/comments', $aComments);

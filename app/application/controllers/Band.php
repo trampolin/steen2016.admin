@@ -8,6 +8,14 @@
 
 class Band extends Admin_Controller {
 
+    public function create() {
+        $id = $this->band_model->insert([
+            'insert_user' => $this->session->user_id
+        ]);
+
+        redirect(base_url() . 'band/details/' . $id . '/new');
+    }
+
     public function details($id,$mode = null) {
 
         $oBand = $this->band_model->byId($id);

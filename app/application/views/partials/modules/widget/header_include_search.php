@@ -53,7 +53,7 @@
                          Steen.baseUrl + 'data/connect/<?= $widgetHeaderIncludeType ?>/' + selectId + '/<?= $widgetHeaderIncludeConnectType ?>/<?= $widgetHeaderIncludeConnectTargetId ?>'
                      ).success(function(response) {
                          if (Steen.request.isOk(response)) {
-                             Steen.widget['<?= $widgetHeaderIncludeType ?>'].reload('<?= $widgetHeaderIncludeId ?>','<?= $widgetHeaderIncludeConnectType ?>','<?= $widgetHeaderIncludeConnectTargetId ?>');
+                             Steen.widget['<?= $widgetHeaderIncludeType ?>'].reload('#<?= $widgetHeaderIncludeId ?>','<?= $widgetHeaderIncludeConnectType ?>','<?= $widgetHeaderIncludeConnectTargetId ?>');
                          } else {
                              Steen.messages.error(response.data);
                          }

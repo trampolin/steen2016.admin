@@ -117,21 +117,30 @@
 				</span>
 
         <!-- breadcrumb -->
-        <ol class="breadcrumb">
+        <!--ol class="breadcrumb">
             <li>Home</li><li>Dashboard</li>
-        </ol>
+        </ol-->
         <!-- end breadcrumb -->
 
         <!-- You can also add more buttons to the
         ribbon for further usability
 
-        Example below:
+        Example below: -->
 
-        <span class="ribbon-button-alignment pull-right">
-        <span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa-grid"></i> Change Grid</span>
-        <span id="add" class="btn btn-ribbon hidden-xs" data-title="add"><i class="fa-plus"></i> Add</span>
-        <span id="search" class="btn btn-ribbon" data-title="search"><i class="fa-search"></i> <span class="hidden-mobile">Search</span></span>
-        </span> -->
+        <span class="ribbon-button-alignment">
+            <a href="/person/create" id="ribbon-add-person" class="btn btn-ribbon" data-title="add-user">
+                <i class="fa fa-plus"></i>
+                <i class="fa fa-user"></i>
+            </a>
+            <a href="/band/create" id="ribbon-add-band" class="btn btn-ribbon" data-title="add-band">
+                <i class="fa fa-plus"></i>
+                <i class="fa fa-music"></i>
+            </a>
+            <a href="/venue/create" id="ribbon-add-venue" class="btn btn-ribbon" data-title="add-band">
+                <i class="fa fa-plus"></i>
+                <i class="fa fa-globe"></i>
+            </a>
+        </span> <!-- -->
 
     </div>
     <!-- END RIBBON -->

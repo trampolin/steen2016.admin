@@ -183,17 +183,17 @@ Steen = {
     
     widget: {
 
-        reload: function(elementId,baseType,targetType,targetId) {
+        reload: function(selector,baseType,targetType,targetId) {
             var url = Steen.baseUrl + 'widget/'+baseType+'/load/' + targetType + '/' + (targetId ? targetId : '');
             $.ajax(
                 url
             ).success(function(response) {
-                var widgetBody = $('#' + elementId).closest('.jarviswidget').find('.widget-body');
+                var widgetBody = $(selector).closest('.jarviswidget').find('.widget-body');
                 $(widgetBody).html(response);
                 Steen.request.page.initLinks(widgetBody);
                 Steen.request.page.events.fire();
             }).error(function(jqXHR, textStatus, errorThrown) {
-                var widgetBody = $('#' + elementId).closest('.jarviswidget').find('.widget-body');
+                var widgetBody = $(selector).closest('.jarviswidget').find('.widget-body');
                 $(widgetBody).html(jqXHR.responseText);
             });
         },
@@ -213,28 +213,14 @@ Steen = {
         },
 
         band: {
-            reload: function(elementId,targetType,targetId) {
-                Steen.widget.reload(elementId,'band',targetType,targetId);
+            reload: function(selector,targetType,targetId) {
+                Steen.widget.reload(selector,'band',targetType,targetId);
             }
         },
 
         person: {
-            reload: function(elementId,targetType,targetId) {
-
-                var url = Steen.baseUrl + 'widget/person/load/' + targetType + '/' + (targetId ? targetId : '');
-
-                $.ajax(
-                    url
-                ).success(function(response) {
-
-                    var widgetBody = $('#' + elementId).closest('.jarviswidget').find('.widget-body');
-
-                    $(widgetBody).html(response);
-                    Steen.request.page.initLinks(widgetBody);
-                    Steen.request.page.events.fire();
-                }).error(function(jqXHR, textStatus, errorThrown) {
-                    $('#' + elementId).closest('.widget-body').html(jqXHR.responseText);
-                });
+            reload: function(selector,targetType,targetId) {
+                Steen.widget.reload(selector,'person',targetType,targetId);
             }
         }
     },

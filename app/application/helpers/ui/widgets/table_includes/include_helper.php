@@ -51,8 +51,47 @@ class TableInclude {
     public function renderFooter() {
         $this->ci->load->view($this->footerTemplate);
     }
+}
 
+class DisconnectTableInclude extends TableInclude {
 
+    protected $_sSourceType;
+    protected $_sTargetType;
+    protected $_iSourceId;
+    protected $_sTargetFieldName;
+
+    public function __construct($sSourceType,$sTargetType,$iSourceId,$sTargetFieldName) {
+        parent::__construct(
+            'partials/modules/table/disconnect_include/header',
+            'partials/modules/table/disconnect_include/row',
+            'partials/modules/table/disconnect_include/footer'
+        );
+
+        $this->_iSourceId = $iSourceId;
+        $this->_sSourceType = $sSourceType;
+        $this->_sTargetFieldName = $sTargetFieldName;
+        $this->_sTargetType = $sTargetType;
+    }
+
+    /**
+     * @param $aRow
+     */
+    public function renderRow($aRow) {
+
+        if (is_array($aRow)) {
+            $aRow['source_type'] = $this->_sSourceType;
+            $aRow['source_id'] = $this->_iSourceId;
+            $aRow['target_type'] = $this->_sTargetType;
+            $aRow['target_field_name'] = $this->_sTargetFieldName;
+        } else {
+            $aRow->{'source_type'} = $this->_sSourceType;
+            $aRow->{'source_id'} = $this->_iSourceId;
+            $aRow->{'target_type'} = $this->_sTargetType;
+            $aRow->{'target_field_name'} = $this->_sTargetFieldName;
+        }
+
+        parent::renderRow($aRow);
+    }
 }
 
 /**

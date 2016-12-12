@@ -38,4 +38,12 @@ class Person extends Ajax_Controller {
         $aPersons = $this->person_model->search($this->input->get('term'));
         $this->jsonOutput($aPersons);
     }
+
+    /**
+     * @param $iId
+     */
+    public function delete($iId) {
+        $this->person_model->delete($iId);
+        $this->jsonOutput(null);
+    }
 }

@@ -12,7 +12,7 @@ class Home extends Admin_Controller {
     }
 
     public function index() {
-        $aGigs = $this->gig_model->get();
+        $aGigs = $this->gig_model->upcoming();
         $aPersons = $this->person_model->get();
         $aVenues = $this->venue_model->get();
         $aBands = $this->band_model->get();

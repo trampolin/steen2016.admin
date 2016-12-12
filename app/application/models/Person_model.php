@@ -94,7 +94,7 @@ class Person_model extends STEEN_Model {
             $this->db->or_like('phone', $sTerm);
         }
 
-        $this->db->group_end();
+        $this->db->group_end()->where('deleted', 0);
 
         $aData = $this->db->get()
             ->result_array();
@@ -189,7 +189,7 @@ class Person_model extends STEEN_Model {
      * @return bool
      */
     public function isConnectedToVenue($iPersonId,$iVenueId) {
-        $aRows = $this->db->select('gig_id,band_id')
+        $aRows = $this->db->select('venue_id,person_id')
             ->from('venue_person')
             ->where([
                 'venue_id' => $iVenueId,
