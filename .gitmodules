@@ -1,0 +1,3 @@
+[submodule "app/application/third_party/php-imap"]
+	path = app/application/third_party/php-imap
+	url = https://github.com/barbushin/php-imap.git
