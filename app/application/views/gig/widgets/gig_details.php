@@ -49,7 +49,10 @@ if (!isset($oGig->showDetailsButton)) {
             </label>
         </section>
 
-
+        <section>
+            <?php // todo change this ?>
+            <textarea style="width:100%;resize:vertical;" rows="10" name="info" placeholder="Hier alle Infos zum Gig rein schreiben" <?php if(!$oGig->writable) { echo 'disabled="disabled"'; } ?>><?= $oGig->info ?></textarea>
+        </section>
 
     </fieldset>
 

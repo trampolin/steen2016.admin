@@ -20,6 +20,9 @@
                 <?php $gigWidget->render() ?>
             </div>
             <div class="row">
+                <?php $personWidget->render() ?>
+            </div>
+            <div class="row">
                 <?php $commentWidget->render() ?>
             </div>
         </div>

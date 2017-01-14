@@ -28,6 +28,7 @@ class Gig_model extends STEEN_Model {
             'g.external_link',
             'g.insert_time',
             'g.insert_user',
+            'g.info',
             'v.name'
         ])
             ->from('gig g')

@@ -204,7 +204,7 @@ Steen = {
                     Steen.baseUrl + 'widget/comments/load/' + elementId + '/' + targetType + '/' + targetId
                 ).success(function(response) {
                     $('#' + elementId).closest('.widget-body').html(response);
-
+                    Steen.request.page.events.fire();
                 }).error(function(jqXHR, textStatus, errorThrown) {
                     $('#' + elementId).closest('.widget-body').html(jqXHR.responseText);
                 });

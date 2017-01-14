@@ -29,6 +29,7 @@ class Gig extends Admin_Controller {
         $oGig = $this->gig_model->byId($id);
         $oVenue = $this->venue_model->byId($oGig->venue_id);
         $aBands = $this->band_model->byGigId($id);
+        $aPersons = $this->person_model->byGigId($id);
 
         $aComments = $this->comment_model->getCommentSectionData('gig-details-comments-section','gig',$id);
 
@@ -42,11 +43,14 @@ class Gig extends Admin_Controller {
         $commentWidget = new SteenWidget('gig-details-comments', 'Kommentare', 'partials/modules/comments', $aComments);
         $commentWidget->icon = 'fa-comments';
 
+        $personWidget = new PersonListWidget('gig-details-person-widget', $aPersons);
+
         $this->renderPage('gig/details', [
             'venueWidget' => $venueWidget,
             'gigWidget' => $gigWidget,
             'commentWidget' => $commentWidget,
-            'bandWidget' => $bandWidget
+            'bandWidget' => $bandWidget,
+            'personWidget' => $personWidget
         ]);
 
     }

@@ -12,11 +12,10 @@ class Person_model extends STEEN_Model {
         parent::__construct();
     }
 
-
     /**
      * @return CI_DB_query_builder
      */
-    private function _prepareStatement() {
+    private function _prepareSelect() {
         return $this->db->select([
             'p.id',
             'p.firstname',
@@ -24,7 +23,14 @@ class Person_model extends STEEN_Model {
             'p.email',
             'p.phone',
             'p.memo'
-        ])
+        ]);
+    }
+
+    /**
+     * @return CI_DB_query_builder
+     */
+    private function _prepareStatement() {
+        return $this->_prepareSelect()
             ->from('person p')
             ->where('p.deleted',0);
     }
@@ -71,6 +77,26 @@ class Person_model extends STEEN_Model {
         return $this->_prepareStatement()
             ->join('band_person bp','p.id = bp.person_id')
             ->where('bp.band_id',$iBandId)
+            ->order_by('p.lastname ASC, p.firstname ASC')
+            ->get()
+            ->result();
+    }
+
+    /**
+     * @param $iGigId
+     * @return mixed
+     */
+    public function byGigId($iGigId) {
+
+        return $this->_prepareSelect()
+            ->from('gig g')
+            ->join('gig_band gb','gb.gig_id = g.id')
+            ->join('band_person bp','bp.band_id = gb.band_id')
+            ->join('venue_person vp', 'g.venue_id = vp.venue_id')
+            ->join('person p','p.id = vp.person_id OR p.id = bp.person_id')
+            ->where('g.id',$iGigId)
+            ->where('p.deleted',0)
+            ->group_by('p.id')
             ->order_by('p.lastname ASC, p.firstname ASC')
             ->get()
             ->result();
