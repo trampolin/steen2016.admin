@@ -39,6 +39,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <li class="">
                 <a href="<?= base_url() ?>venue" title="Gigs"><i class="fa fa-lg fa-fw fa-globe"></i> <span class="menu-item-parent">Venues</span></a>
             </li>
+            <li class="">
+                <a href="<?= base_url() ?>mail" title="Mails"><i class="fa fa-lg fa-fw fa-envelope"></i> <span class="menu-item-parent">Mails</span></a>
+            </li>
         </ul>
     </nav>
 

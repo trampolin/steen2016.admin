@@ -283,6 +283,12 @@ switch (ENVIRONMENT)
 	define('VIEWPATH', $view_folder);
 
 /*
+ * load custom third party modules
+ */
+
+require_once APPPATH . 'third_party/php-imap/src/PhpImap/__autoload.php';
+
+/*
  * --------------------------------------------------------------------
  * LOAD THE BOOTSTRAP FILE
  * --------------------------------------------------------------------

@@ -38,9 +38,9 @@ you can add as many as you like
 <div id="shortcut">
     <ul>
         <li>
-            <a href="inbox.html" class="jarvismetro-tile big-cubes bg-color-blue"> <span class="iconbox"> <i class="fa fa-envelope fa-4x"></i> <span>Mail <span class="label pull-right bg-color-darken">14</span></span> </span> </a>
+            <a href="<?= base_url() ?>mail" class="jarvismetro-tile big-cubes bg-color-blue"> <span class="iconbox"> <i class="fa fa-envelope fa-4x"></i> <span>Mail <span class="label pull-right bg-color-darken">14</span></span> </span> </a>
         </li>
-        <li>
+        <!--li>
             <a href="calendar.html" class="jarvismetro-tile big-cubes bg-color-orangeDark"> <span class="iconbox"> <i class="fa fa-calendar fa-4x"></i> <span>Calendar</span> </span> </a>
         </li>
         <li>
@@ -54,7 +54,7 @@ you can add as many as you like
         </li>
         <li>
             <a href="profile.html" class="jarvismetro-tile big-cubes selected bg-color-pinkDark"> <span class="iconbox"> <i class="fa fa-user fa-4x"></i> <span>My Profile </span> </span> </a>
-        </li>
+        </li-->
     </ul>
 </div>
 <!-- END SHORTCUT AREA -->
