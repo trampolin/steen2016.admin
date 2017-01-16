@@ -16,7 +16,6 @@ class Mail extends Admin_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model('mail/Mail_model', 'mail_model');
 
     }
 

@@ -16,6 +16,7 @@
  * @property user_model user_model
  * @property Comment_model comment_model
  * @property Log_model log_model
+ * @property Mail_model mail_model
  *
  */
 abstract class STEEN_Controller extends CI_Controller

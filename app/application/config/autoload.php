@@ -158,5 +158,6 @@ $autoload['model'] = [
     'Band_model' => 'band_model',
     'user_model' => 'user_model',
     'ui/Comment_model' => 'comment_model',
+    'mail/Mail_model' => 'mail_model',
     'system/Log_model' => 'log_model'
 ];

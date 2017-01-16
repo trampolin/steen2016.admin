@@ -17,6 +17,33 @@ class Person extends Admin_Controller {
     }
 
     /**
+     * @param $iAccountId
+     * @param $iMailId
+     */
+    public function createFromMailIfNotExist($iAccountId,$iMailId) {
+        $aMail = $this->mail_model->getMail($iAccountId,$iMailId);
+
+        if (empty($aMail)) {
+            // mail does not exist
+        } else {
+            // mail does exist
+            if (empty($aMail['person_id'])) {
+                // ready to create
+                $id = $this->person_model->insert([
+                    'insert_user' => $this->session->user_id,
+                    'email' => $aMail['fromAddress'],
+                    'lastname' => $aMail['fromName']
+                ]);
+
+                redirect(base_url() . 'person/details/' . $id . '/new-from-mail');
+            } else {
+                // already created
+                redirect(base_url() . 'person/details/' . $aMail['person_id'] . '/already-created');
+            }
+        }
+    }
+
+    /**
      * @param $id
      * @param null $mode
      */
